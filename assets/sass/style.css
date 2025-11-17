@@ -10720,6 +10720,9 @@ Footer One CSS
 .footer__one-widget-contact-info-item-txt a:hover {
   color: var(--primary-color-1);
 }
+.footer__one-widget-solution{
+  width: 140%;
+}
 .footer__one-widget-solution ul {
   padding: 0;
   margin: 0;
