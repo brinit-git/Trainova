@@ -14,7 +14,7 @@ export const site = {
   region: 'Keralam',
   pin: '695040',
   country: 'India',
-  ga4: '', // paste the GA4 measurement ID here, e.g. G-XXXXXXX. Empty means no analytics loads.
+  ga4: 'G-1MQ62Y0T44', // Google Analytics measurement ID. Empty means no analytics loads.
   sameAs: ['https://www.instagram.com/trainovabs/', 'https://www.linkedin.com/company/trainovabs-pvt-ltd/', 'https://www.facebook.com/share/17K8p7oz5M/'],
   person: { name: 'Muhammad Anas NS', linkedin: 'https://www.linkedin.com/in/muhammad-anas-ns-37290794/' },
 };
@@ -246,6 +246,7 @@ export function render(p, css, js) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>document.documentElement.classList.add('js')</script>
+${ga}
 <title>${esc(p.title)}</title>
 <meta name="description" content="${esc(p.description)}">
 <link rel="canonical" href="${url}">
@@ -268,7 +269,6 @@ export function render(p, css, js) {
 <link rel="preload" href="/assets/fonts/body.woff2" as="font" type="font/woff2" crossorigin>
 <style>${fontFace}${css}</style>
 <script type="application/ld+json">${schema(p)}</script>
-${ga}
 </head>
 <body>
 ${header(p.path)}
