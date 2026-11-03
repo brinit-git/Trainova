@@ -29,4 +29,11 @@ export const testimonials = [
     headline: '“I was the answer to every question in my own company.”',
     quote: '“I thought that was what being a founder meant. Trainova didn’t give me a speech about it. They sat with my team, wrote down how the work should run and who decides what. Now my people come to me with decisions they’ve already made.”',
   },
+  {
+    name: 'Arun Babu',
+    role: 'CEO, Unirun Traders',
+    logo: 'unirun-traders.webp',
+    headline: '“My business was only as big as what I could check myself.”',
+    quote: '“In wholesale, one wrong price or one missed follow-up costs real money, so I kept every decision with me. Trainova helped us write down who handles what, and trained the team to do it. I still care about every order. I just don’t have to carry every one of them.”',
+  },
 ];

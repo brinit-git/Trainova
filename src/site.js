@@ -119,7 +119,7 @@ if(!calm){
       });
     },{rootMargin:'0px 0px -7% 0px'});
     d.querySelectorAll('.band h2,.band .eyebrow,.band .lead,.two .prose>*,.said li,.scenes li>*,.steps li,.wounds li,.after li,.card,.plan,.faq details,.chain li,.doc,figure,.ticks li,.crosses li,.vid video,.closer,.tm,.logos-head,.band .cta,.lead-sec .mad,.lead-sec fieldset,.table').forEach(function(t){
-      if(t.closest('.hero,.article .prose'))return;
+      if(t.closest('.hero,.article .prose')||t.matches('.tm:not(:first-child)'))return;
       t.classList.add('rv');io.observe(t);
     });
     d.querySelectorAll('.article .prose>.doc,.article .prose>.tablewrap').forEach(function(t){t.classList.add('rv');io.observe(t)});
