@@ -3,3 +3,6 @@
 !.vscode/extensions.json
 .idea
 .DS_Store
+
+# Original photos; the site uses the optimised copies in assets/images
+assets/real images/
