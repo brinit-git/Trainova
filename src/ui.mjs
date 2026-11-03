@@ -7,14 +7,17 @@ export const site = {
   telText: '+91 90612 66629',
   wa: 'https://wa.me/919061266629',
   email: 'info@trainovaglobal.com',
-  street: 'Madhavam Buildings, Door No: VP/1/21',
-  city: 'Trivandrum',
-  region: 'Kerala',
-  pin: '695573',
+  street: 'TC 52/936 KJ Square Regus, Neeramankara, near Karamana - Poojapura Road, Kaimanam',
+  city: 'Thiruvananthapuram',
+  region: 'Keralam',
+  pin: '695040',
+  country: 'India',
   ga4: '', // paste the GA4 measurement ID here, e.g. G-XXXXXXX. Empty means no analytics loads.
   sameAs: ['https://www.instagram.com/trainovabs/', 'https://www.linkedin.com/company/trainovabs-pvt-ltd/', 'https://www.facebook.com/share/17K8p7oz5M/'],
   person: { name: 'Muhammad Anas NS', linkedin: 'https://www.linkedin.com/in/muhammad-anas-ns-37290794/' },
 };
+
+export const address = `${site.street}, ${site.city}, ${site.region} ${site.pin}, ${site.country}`;
 
 export const consulting = [
   ['/sop-consulting/', 'SOP consulting', 'Get what is in your head onto paper'],
@@ -68,7 +71,7 @@ export const cta = (label = 'Book my free business audit', href = '/free-busines
 
 export function hero({ scene, quote, after, h1, lede, log, side, md, ctaLabel, ctaHref, note }) {
   const right = log
-    ? `<div class="log" role="img" aria-label="A list of calls from staff to the business owner through one day"><div class="log-head mono"><span>${log.title}</span><span>${log.count}</span></div><ul>${log.items.map(([t, x, hot]) => `<li${hot ? ' class="hot"' : ''}><span class="t">${t}</span><span>${x}</span></li>`).join('')}</ul></div>`
+    ? `<div class="log" role="img" aria-label="A list of calls from staff to the business owner through one day"><div class="log-head mono"><span>${log.title}</span><span>${log.count}</span></div><ul>${log.items.map(([t, x, hot], i) => `<li${hot ? ' class="hot"' : ''} style="--n:${i}"><span class="t">${t}</span><span>${x}</span></li>`).join('')}</ul></div>`
     : side || '';
   return `<section class="hero dark"><div class="wrap"><div class="hero-grid"><div>
 ${scene ? `<span class="scene mono">${scene}</span>` : ''}
@@ -82,7 +85,7 @@ ${cta(ctaLabel, ctaHref, note)}
 
 // A short page head for pages that do not open on a scene.
 export const plainHero = ({ eyebrow, h1, lede, extra = '' }) => `<section class="hero dark"><div class="wrap"><div class="prose">
-${eyebrow ? `<span class="scene mono">${eyebrow}</span>` : ''}<h1 style="font-size:clamp(2.1rem,5.5vw,3.9rem);line-height:1.04;letter-spacing:-.03em;color:inherit;max-width:none">${h1}</h1><p class="lead">${lede}</p>${extra}</div></div></section>`;
+${eyebrow ? `<span class="scene mono">${eyebrow}</span>` : ''}<h1 class="ph1">${h1}</h1><p class="lead">${lede}</p>${extra}</div></div></section>`;
 
 export const band = (inner, cls = '') => `<section class="band ${cls}"><div class="wrap">${inner}</div></section>`;
 export const head = (eyebrow, h2, intro = '') => `${eyebrow ? `<span class="eyebrow mono">${eyebrow}</span>` : ''}<h2>${h2}</h2>${intro ? `<p class="lead">${intro}</p>` : ''}`;
@@ -104,7 +107,10 @@ export const afterState = ({ h2, lines, after = '' }) => band(`<h2>${h2}</h2><ul
 
 export const notFor = ({ h2 = 'Who we are not for', intro, items }) => band(`<div class="two"><div><h2>${h2}</h2>${intro ? `<p>${intro}</p>` : ''}</div><ul class="crosses">${items.map((x) => `<li>${x}</li>`).join('')}</ul></div>`, 'rule');
 
-export const cards = (items, label = 'Read more') => `<div class="cards">${items.map(([h, t, d]) => `<a class="card" href="${h}"><b>${t}</b><span>${d}</span><em>${label} →</em></a>`).join('')}</div>`;
+export const cards = (items, label = 'Read more') => `<div class="cards${items.length > 3 ? ' c4' : ''}">${items.map(([h, t, d]) => `<a class="card" href="${h}"><b>${t}</b><span>${d}</span><em>${label} <i>→</i></em></a>`).join('')}</div>`;
+
+// Decorative service names, hidden from screen readers because the real links sit below it.
+export const ticker = () => { const names = [...consulting, ...training.slice(1)].map(([, t]) => `<span class="mono">${t}</span>`).join(''); return `<div class="tick" aria-hidden="true"><div>${names}${names}</div></div>`; };
 
 export const related = (h2, paths, label) => {
   const all = [...consulting, ...training, ...guides, ...extraLinks];
@@ -147,26 +153,41 @@ export const leadForm = ({ h2 = 'Tell us what your week actually looks like.', s
 <figure class="leadpic"><img src="/assets/images/anas-cutout-433.webp" width="433" height="577" alt="Anas of Trainova BS holding a brochure that reads We Shape Values into Scalable Systems and SOPs" loading="lazy" decoding="async"></figure>
 </div></div></section>`;
 
-const dropdown = (label, items) => `<li><details><summary>${label}</summary><div class="drop">${items.map(([h, t, d]) => `<a href="${h}">${t}<small>${d}</small></a>`).join('')}</div></details></li>`;
-const header = `<a class="skip" href="#main">Skip to content</a><header class="top"><div class="wrap">
-<a class="logo" href="/" aria-label="Trainova BS home"><img src="/assets/images/logo.webp" width="544" height="147" alt="Trainova BS"></a>
-<nav class="nav" aria-label="Main"><ul>${dropdown('Consulting', consulting)}${dropdown('Training', training)}<li><a href="/pricing/">Pricing</a></li><li><a href="/guides/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul><a class="btn" href="/free-business-audit/">Free business audit</a></nav>
-<details class="burger"><summary aria-label="Open menu"><span></span></summary><nav class="burger-panel" aria-label="Mobile">
-<b>Consulting</b>${consulting.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}
-<b>Training</b>${training.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}
-<b>Company</b><a href="/free-business-audit/">Free business audit</a><a href="/pricing/">Pricing</a><a href="/guides/">Guides</a><a href="/about/">About</a><a href="/gallery/">Gallery</a><a href="/contact/">Contact</a>
-</nav></details>
+const current = (path, h) => (path === h ? ' aria-current="page"' : '');
+const megaMenu = (path, id, label, items, cur, feat) => `<li class="has-mega"><button type="button" class="lnk${cur ? ' cur' : ''}" aria-expanded="false" aria-controls="${id}">${label}<span class="chev" aria-hidden="true"></span></button>
+<div class="mega" id="${id}"><div class="mega-l">${items.map(([h, t, d], i) => `<a class="mi" href="${h}" style="--i:${i}"${current(path, h)}><b>${t}</b><small>${d}</small></a>`).join('')}</div>${feat}</div></li>`;
+const feature = (cls, href, tag, title, text) => `<a class="feat ${cls}" href="${href}"><span class="mono">${tag}</span><strong>${title}</strong><small>${text}</small></a>`;
+const navLink = (path, h, t, cur) => `<li><a class="lnk${cur ? ' cur' : ''}" href="${h}"${current(path, h)}>${t}</a></li>`;
+const header = (path) => {
+  const inConsulting = consulting.some(([h]) => h === path) || path.startsWith('/business-consultant-');
+  const inTraining = training.some(([h]) => h === path);
+  const mobile = [
+    `<details class="mg" name="m" style="--n:0"><summary>Consulting</summary><div class="mg-l">${consulting.map(([h, t]) => `<a href="${h}"${current(path, h)}>${t}</a>`).join('')}</div></details>`,
+    `<details class="mg" name="m" style="--n:1"><summary>Training</summary><div class="mg-l">${training.map(([h, t]) => `<a href="${h}"${current(path, h)}>${t}</a>`).join('')}</div></details>`,
+    ...[['/pricing/', 'Pricing'], ['/guides/', 'Guides'], ['/about/', 'About'], ['/gallery/', 'Gallery'], ['/contact/', 'Contact']].map(([h, t], i) => `<a href="${h}" style="--n:${i + 2}"${current(path, h)}>${t}</a>`),
+  ].join('');
+  return `<a class="skip" href="#main">Skip to content</a><header class="top"><div class="bar"><span class="ind" aria-hidden="true"></span>
+<a class="logo" href="/" aria-label="Trainova BS home"><img src="/assets/images/logo-white.webp" width="544" height="147" alt="Trainova BS"></a>
+<nav class="nav" aria-label="Main"><ul class="links">
+${megaMenu(path, 'mega-consulting', 'Consulting', consulting, inConsulting, feature('f1', '/free-business-audit/', 'Start here', 'Free business audit', 'See where your business depends on you.'))}
+${megaMenu(path, 'mega-training', 'Training', training, inTraining, feature('f2', '/corporate-training/#talk', 'For your team', 'Ask about a batch', 'Tell us your team size and what should change.'))}
+${navLink(path, '/pricing/', 'Pricing')}${navLink(path, '/guides/', 'Guides', path.startsWith('/guides/'))}${navLink(path, '/about/', 'About')}${navLink(path, '/contact/', 'Contact')}
+</ul></nav>
+<div class="bar-end"><a class="bar-tel" href="tel:${site.tel}">${site.telText}</a><a class="bar-cta" href="/free-business-audit/">Free business audit <i aria-hidden="true">→</i></a>
+<details class="burger"><summary aria-label="Open menu"><span class="bx" aria-hidden="true"><i></i><i></i></span></summary><div class="mp"><nav class="mp-nav" aria-label="Mobile">${mobile}</nav>
+<div class="mp-end dark"><a class="btn btn-go" href="/free-business-audit/">Book my free business audit</a><a class="btn btn-line" href="${waLink}" rel="noopener">WhatsApp us</a><a class="mp-tel" href="tel:${site.tel}">${site.telText}</a></div></div></details></div>
 </div></header>`;
+};
 
 const list = (title, items) => `<div><h2>${title}</h2><ul>${items.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}</ul></div>`;
 const footer = `<footer class="foot"><div class="wrap"><div class="foot-grid">
 <div><img src="/assets/images/logo-white.webp" width="544" height="147" alt="Trainova BS" loading="lazy"><p>From chaos to process. We help Kerala’s MSMEs build the systems that let a business run without its owner in every room.</p>
-<address>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}<br><a href="tel:${site.tel}">${site.telText}</a><br><a href="mailto:${site.email}">${site.email}</a></address>
+<address>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}, ${site.country}<br><a href="tel:${site.tel}">${site.telText}</a><br><a href="mailto:${site.email}">${site.email}</a></address>
 <p><a href="${site.sameAs[0]}" rel="noopener">Instagram</a> · <a href="${site.sameAs[1]}" rel="noopener">LinkedIn</a> · <a href="${site.sameAs[2]}" rel="noopener">Facebook</a></p></div>
 ${list('Consulting', [...consulting, ['/business-consultant-trivandrum/', 'Business consultant, Trivandrum'], ['/business-consultant-kochi/', 'Business consultant, Kochi'], ['/business-consultant-calicut/', 'Business consultant, Calicut']])}
 ${list('Training', training)}
 ${list('Company', [['/free-business-audit/', 'Free business audit'], ['/pricing/', 'Plans and fees'], ['/about/', 'About'], ['/gallery/', 'Gallery'], ['/guides/', 'Guides'], ...guides.map(([h, t]) => [h, t]), ['/contact/', 'Contact'], ['/privacy-policy/', 'Privacy policy']])}
-</div><div class="legal"><span>© ${new Date().getFullYear()} ${site.legal}. All rights reserved.</span><span>Website by <a href="https://brinit.in" rel="noopener">BrinIT</a></span></div></div></footer>
+</div><div class="legal"><span>© ${new Date().getFullYear()} ${site.legal}. All rights reserved.</span><span>Website designed by <a href="https://www.prception.in" rel="noopener">PRception</a></span></div></div></footer>
 <div class="mbar"><a href="tel:${site.tel}">Call</a><a href="${waLink}" rel="noopener">WhatsApp</a><a href="/free-business-audit/">Free audit</a></div>`;
 
 const fontFace = `@font-face{font-family:"Bricolage Grotesque";src:url(/assets/fonts/display.woff2) format("woff2");font-weight:800;font-display:swap}@font-face{font-family:"Instrument Sans";src:url(/assets/fonts/body.woff2) format("woff2");font-weight:400 700;font-display:swap}@font-face{font-family:"JetBrains Mono";src:url(/assets/fonts/mono.woff2) format("woff2");font-weight:500;font-display:swap}`;
@@ -206,6 +227,7 @@ export function render(p, css, js) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
 <title>${esc(p.title)}</title>
 <meta name="description" content="${esc(p.description)}">
 <link rel="canonical" href="${url}">
@@ -231,7 +253,7 @@ export function render(p, css, js) {
 ${ga}
 </head>
 <body>
-${header}
+${header(p.path)}
 ${crumbs}
 <main id="main">
 ${p.body}

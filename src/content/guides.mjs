@@ -6,13 +6,23 @@ const by = `<p class="muted" style="font-size:.92rem">By <a href="/about/">Muham
 const others = (path) => band(`<h2>More guides</h2>${cards(allGuides.filter(([h]) => h !== path).slice(0, 3), 'Read the guide')}`, 'rule');
 const table = (head, rows) => `<div class="tablewrap"><table class="table"><thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 
+const slug = (t) => t.replace(/<[^>]+>/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const withToc = (content) => {
+  const items = [];
+  const body = content.replace(/<h2>(.*?)<\/h2>/g, (_, t) => { const id = slug(t); items.push([id, t]); return `<h2 id="${id}">${t}</h2>`; });
+  const toc = `<nav class="toc" aria-label="On this page"><p class="mono">On this page</p><ol>${items.map(([id, t]) => `<li><a href="#${id}">${t}</a></li>`).join('')}</ol></nav>`;
+  return { body, toc };
+};
+const rail = `<a class="rail" href="/free-business-audit/"><span class="mono">Stuck on this?</span><strong>Free business audit</strong><small>See where your business depends on you, in one honest conversation.</small><em>Book it →</em></a>`;
+
 function guide({ path, crumb, keyword, title, description, h1, lede, content, faqs, video, formH2, from, needs }) {
+  const { body, toc } = withToc(content);
   return {
     path, crumb, parent, keyword, title, description, video, faqs: faqs || [],
     article: { headline: h1, date },
     body: [
       plainHero({ eyebrow: 'Guide', h1, lede }),
-      band(`<div class="prose">${by}${content}${cta('Book my free business audit')}</div>`),
+      band(`<div class="article">${toc}<div class="prose">${by}${body}${cta('Book my free business audit')}</div>${rail}</div>`),
       faqs ? faq(faqs, 'Common questions') : '',
       others(path),
       leadForm({ h2: formH2, from, needs }),

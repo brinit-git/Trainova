@@ -1,4 +1,4 @@
-import { hero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, faq, leadForm, fig, cta, related, plans } from '../ui.mjs';
+import { address, hero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, faq, leadForm, fig, cta, related, plans } from '../ui.mjs';
 
 // ---------- SOP consulting
 const sopFaqs = [
@@ -482,7 +482,7 @@ const family = {
 // ---------- Locations
 const tvmFaqs = [
   ['Who are the best business consultants in Trivandrum?', 'It depends on what you need. Several firms in Trivandrum focus on GST, registration and loan paperwork, which is useful and different from what we do. If your problem is how the business runs, ask what they will leave behind, and whether they’ll work with your team in your office.'],
-  ['Where is your office in Trivandrum?', 'Madhavam Buildings, Door No: VP/1/21, Trivandrum, Kerala 695573. Call <a href="tel:+919061266629">+91 90612 66629</a> before you come, so we can make sure someone is there for you.'],
+  ['Where is your office in Trivandrum?', `${address}. Call <a href="tel:+919061266629">+91 90612 66629</a> before you come, so we can make sure someone is there for you.`],
   ['Will a business consultant in Thiruvananthapuram come to my office?', 'We will, and we prefer to. It’s hard to understand a business from a meeting room. Seeing how work moves on an ordinary morning tells us more than any report.'],
   ['What kind of businesses do you work with in Trivandrum?', 'Owner-run MSMEs, such as retail and wholesale traders, clinics, service companies, institutes, contractors and small IT firms.'],
   ['Do you provide corporate training in Trivandrum?', 'Yes. We run <a href="/corporate-training/">corporate training</a> in Trivandrum, including leadership, telecalling, office administration and our Fresh Graduate to Professional programme.'],

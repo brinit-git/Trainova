@@ -1,4 +1,4 @@
-import { hero, plainHero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, cards, plans, faq, leadForm, fig, img, cta, related, consulting, training, guides, site, waLink } from '../ui.mjs';
+import { address, ticker, hero, plainHero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, cards, plans, faq, leadForm, fig, img, cta, related, consulting, training, guides, site, waLink } from '../ui.mjs';
 
 const homeFaqs = [
   ['Are you a business management consultant or a business advisor?', 'Both words fit. Look for the best business consultant in Kerala and you will find business consulting firms offering everything from GST to strategy. Trainova BS is a business management consultant and business advisor in Kerala for owner-run companies, and our business consultancy services stick to how the company runs.'],
@@ -36,6 +36,7 @@ const home = {
         ],
       },
     }),
+    ticker(),
     said({
       eyebrow: 'What you tell people',
       lines: ['It’s faster if I just do it myself.', 'Nobody here thinks like me.', 'Once this season is over, it will settle down.', 'Good staff don’t stay anyway.', 'I’ll take a proper holiday next year.', 'Ask me before you do anything.'],
@@ -83,7 +84,7 @@ const home = {
       ],
       after: cta(),
     }),
-    band(`${head('What we do', 'Pick the problem you recognise.')}${cards(consulting)}<h3 style="margin-top:44px">Training for your team</h3>${cards(training.slice(1))}`, 'rule'),
+    band(`${head('What we do', 'Pick the problem you recognise.')}${cards(consulting)}<h3 style="margin-top:44px">Training for your team</h3>${cards(training)}`, 'rule'),
     wounds({
       eyebrow: 'You’ve probably tried this already',
       h2: 'Here’s what we won’t do to you again.',
@@ -260,7 +261,7 @@ const contact = {
   description: 'Contact Trainova BS in Trivandrum, Kerala. Call or WhatsApp +91 90612 66629, email info@trainovaglobal.com, or send us a note about your business.',
   body: [
     plainHero({ eyebrow: 'Contact', h1: 'Contact Trainova BS', lede: 'Tell us what’s going on in your business. You’ll get a reply from a person, in Malayalam or English.', extra: `<div class="cta"><a class="btn btn-go" href="${waLink}" rel="noopener">WhatsApp us</a><a class="btn btn-line" href="tel:${site.tel}">Call ${site.telText}</a></div>` }),
-    band(`<div class="cards"><div class="card"><b>Phone and WhatsApp</b><span><a href="tel:${site.tel}">${site.telText}</a></span></div><div class="card"><b>Email</b><span><a href="mailto:${site.email}">${site.email}</a></span></div><div class="card"><b>Office</b><span>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}<br><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.street + ', Trivandrum, Kerala ' + site.pin)}" rel="noopener">Open in Google Maps</a></span></div></div>`, 'tight'),
+    band(`<div class="cards"><div class="card"><b>Phone and WhatsApp</b><span><a href="tel:${site.tel}">${site.telText}</a></span></div><div class="card"><b>Email</b><span><a href="mailto:${site.email}">${site.email}</a></span></div><div class="card"><b>Office</b><span>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}, ${site.country}<br><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" rel="noopener">Open in Google Maps</a></span></div></div>`, 'tight'),
     leadForm({ h2: 'Or send us a note from here.', from: 'Contact page' }),
   ].join(''),
 };
@@ -271,7 +272,7 @@ const privacy = {
   description: 'This privacy policy explains how Trainova BS handles the details you share through this website, WhatsApp, phone and email, and how to delete them.',
   body: [
     plainHero({ eyebrow: 'Legal', h1: 'Privacy policy', lede: 'Short version: we use your details to reply to you, and we don’t sell them.' }),
-    band(`<div class="prose"><h2>What we collect</h2><p>This website has no login. When you fill in our form, your browser opens WhatsApp with your message ready to send, and nothing is stored on this website. We receive only what you send us by WhatsApp, phone or email: typically your name, business, team size, phone number and what you tell us about your business.</p><h2>What we use it for</h2><p>To reply to you, to carry out the audit or work you ask for, and to keep a record of our conversations. What you tell us about your business stays confidential.</p><h2>Who sees it</h2><p>Our team, and the services we use to communicate, such as WhatsApp and email providers. We don’t sell your details or pass them to anyone for their marketing.</p><h2>Website analytics</h2><p>We may use Google Analytics to see how people use this website, such as which pages get read. It uses cookies and doesn’t identify you to us by name. You can block it in your browser settings.</p><h2>Your choices</h2><p>To see, correct or delete what we hold about you, email <a href="mailto:${site.email}">${site.email}</a> or call <a href="tel:${site.tel}">${site.telText}</a>.</p><h2>Who we are</h2><p>${site.legal}, ${site.street}, ${site.city}, ${site.region} ${site.pin}.</p></div>`),
+    band(`<div class="prose"><h2>What we collect</h2><p>This website has no login. When you fill in our form, your browser opens WhatsApp with your message ready to send, and nothing is stored on this website. We receive only what you send us by WhatsApp, phone or email: typically your name, business, team size, phone number and what you tell us about your business.</p><h2>What we use it for</h2><p>To reply to you, to carry out the audit or work you ask for, and to keep a record of our conversations. What you tell us about your business stays confidential.</p><h2>Who sees it</h2><p>Our team, and the services we use to communicate, such as WhatsApp and email providers. We don’t sell your details or pass them to anyone for their marketing.</p><h2>Website analytics</h2><p>We may use Google Analytics to see how people use this website, such as which pages get read. It uses cookies and doesn’t identify you to us by name. You can block it in your browser settings.</p><h2>Your choices</h2><p>To see, correct or delete what we hold about you, email <a href="mailto:${site.email}">${site.email}</a> or call <a href="tel:${site.tel}">${site.telText}</a>.</p><h2>Who we are</h2><p>${site.legal}, ${address}.</p></div>`),
   ].join(''),
 };
 
