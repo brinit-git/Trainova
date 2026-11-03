@@ -1,4 +1,6 @@
 // Shared layout and section components. Content strings are trusted HTML written in src/content.
+import { customers as customerList, testimonials } from './content/proof.mjs';
+
 export const site = {
   name: 'Trainova BS',
   legal: 'TrainovaBS Private Limited',
@@ -138,9 +140,25 @@ export const plans = (heading = true) => {
 
 export const faq = (items, h2 = 'Questions owners ask us', eyebrow = '') => band(`${head(eyebrow, h2)}<div class="faq">${items.map(([q, a]) => `<details><summary><h3>${q}</h3></summary><div class="a"><p>${a}</p></div></details>`).join('')}</div>`, 'rule');
 
+// One group must be wider than the widest screen, so short lists repeat inside it. Two groups slide -50% and loop.
+const TILE = 214;
+const logoTile = ([f, n], visible) => `<li><img src="/assets/images/customers/${f}" width="178" height="84" alt="${visible ? esc(n) : ''}"${visible ? '' : ' data-dup'} loading="lazy" decoding="async"></li>`;
+const marquee = () => {
+  const repeat = Math.ceil(2800 / (customerList.length * TILE));
+  const group = (first) => Array.from({ length: repeat }, (_, i) => customerList.map((c) => logoTile(c, first && i === 0)).join('')).join('');
+  const seconds = customerList.length * repeat * 4.5;
+  return `<div class="mq" id="customers-mq" style="--t:${seconds}s"><div class="mq-t"><ul class="mq-g">${group(true)}</ul><ul class="mq-g mq-dup" aria-hidden="true">${group(false)}</ul></div></div>`;
+};
+const quoteCard = (t) => `<article class="tm"><div class="tm-b">${t.draft ? `<p class="tm-draft mono">Draft · awaiting ${t.name}’s approval</p>` : ''}<blockquote><p class="tm-h">${t.headline}</p><p class="tm-q">${t.quote}</p></blockquote><div class="tm-foot">${t.photo ? `<img class="tm-av" src="/assets/images/testimonials/${t.photo}" width="240" height="240" alt="${esc(t.name)}" loading="lazy" decoding="async">` : ''}<p class="tm-by"><b>${t.name}</b><span>${t.role}</span></p>${t.logo ? `<span class="tm-logo"><img src="/assets/images/customers/${t.logo}" width="150" height="44" alt="${esc(t.role.split(', ').pop())}" loading="lazy" decoding="async"></span>` : ''}</div></div></article>`;
+export const proofSection = () => `<section class="band proof sheetband"><div class="wrap">
+${head('In their words', 'You’ve heard enough promises. Hear it from someone in your chair.')}
+<div class="tms-w"><div class="tms"${testimonials.length > 1 ? ' tabindex="0" role="region" aria-label="Testimonials"' : ''}>${testimonials.map(quoteCard).join('')}</div>${testimonials.length > 1 ? '<div class="tms-nav"><button type="button" data-d="0" aria-label="Previous testimonial">←</button><button type="button" data-d="1" aria-label="Next testimonial">→</button></div>' : ''}</div>
+<div class="logos-head"><div><h3>It’s not easy to let an outsider see how things really run.</h3><p>These businesses opened the door to us anyway.</p></div><button class="mq-pause" type="button" aria-controls="customers-mq" aria-pressed="false">Pause</button></div>
+</div>${marquee()}</section>`;
+
 const defaultNeeds = ['My team calls me for every small decision', 'Nothing is written down', 'I can’t take a week off', 'Revenue grew but profit didn’t', 'Good people keep leaving', 'Sales only happen when I push'];
 
-export const leadForm = ({ h2 = 'Tell us what your week actually looks like.', sub = 'The audit is free. It goes straight to our WhatsApp, not a call centre.', needs = defaultNeeds, from = 'trainovaglobal.com', legend = 'and right now:', ask = '' } = {}) => `<section class="band dark lead-sec" id="talk"><div class="wrap"><div class="leadgrid"><div>
+export const leadForm = ({ h2 = 'Tell us what your week actually looks like.', sub = 'The audit is free. It goes straight to our WhatsApp, not a call centre.', needs = defaultNeeds, from = 'trainovaglobal.com', legend = 'and right now:', ask = '', proof = true } = {}) => `${proof ? proofSection() : ''}<section class="band dark lead-sec" id="talk"><div class="wrap"><div class="leadgrid"><div>
 <span class="eyebrow mono">Trainova BS · Trivandrum, Kerala</span><h2>${h2}</h2><p class="lead">${sub}</p>
 <form action="${site.wa}" method="get" target="_blank" data-wa="${esc(from)}"${ask ? ` data-ask="${esc(ask)}"` : ''} style="margin-top:22px">
 <p class="mad">Hi, I’m <label><span class="sr">Your name</span><input name="name" required autocomplete="name" placeholder="your name"></label> from <label><span class="sr">Your business name</span><input name="biz" required autocomplete="organization" placeholder="your business"></label>. We have <label><span class="sr">Team size</span><select name="size"><option>under 10 people</option><option>10 to 25 people</option><option>25 to 50 people</option><option>50 to 100 people</option><option>over 100 people</option></select></label></p>
@@ -150,7 +168,7 @@ export const leadForm = ({ h2 = 'Tell us what your week actually looks like.', s
 <noscript><p class="alt">If this form doesn’t open WhatsApp, message us directly using the number below.</p></noscript>
 <p class="alt">Prefer to talk? <a href="tel:${site.tel}">${site.telText}</a> · <a href="mailto:${site.email}">${site.email}</a></p>
 </form></div>
-<figure class="leadpic"><img src="/assets/images/anas-cutout-433.webp" width="433" height="577" alt="Anas of Trainova BS holding a brochure that reads We Shape Values into Scalable Systems and SOPs" loading="lazy" decoding="async"></figure>
+<figure class="leadpic"><img src="/assets/images/anas-brochure-800.webp" width="800" height="1067" alt="Anas of Trainova BS, seated, pointing at a brochure that reads We Shape Values into Scalable Systems and SOPs" loading="lazy" decoding="async"></figure>
 </div></div></section>`;
 
 const current = (path, h) => (path === h ? ' aria-current="page"' : '');

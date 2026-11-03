@@ -1,4 +1,5 @@
 // On-page SEO and quality checks across every built page. Run: node src/audit.mjs   (exit 1 on any failure)
+import { testimonials } from './content/proof.mjs';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -76,7 +77,7 @@ for (const p of pages) {
   for (const m of main.matchAll(/<h([1-6])\b/g)) { const n = +m[1]; if (n > last + 1) bad(`heading jumps h${last} to h${n}`); last = n; }
 
   for (const m of html.matchAll(/<img\b[^>]*>/g)) {
-    if (!/\balt="[^"]+"/.test(m[0])) bad(`img without alt: ${m[0].slice(0, 90)}`);
+    if (!/\balt="[^"]+"/.test(m[0]) && !/\bdata-dup\b/.test(m[0])) bad(`img without alt: ${m[0].slice(0, 90)}`);
     if (!/\bwidth="\d+"/.test(m[0]) || !/\bheight="\d+"/.test(m[0])) bad(`img without size: ${m[0].slice(0, 90)}`);
     const src = m[0].match(/\bsrc="([^"]+)"/)[1];
     if (src.startsWith('/') && !existsSync(join(root, src.slice(1)))) bad(`missing image ${src}`);
@@ -127,6 +128,8 @@ for (const p of pages) if (p.path !== '/' && !['/privacy-policy/'].includes(p.pa
 
 const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8');
 for (const p of pages) if (!sitemap.includes(`<loc>${site.url}${p.path}</loc>`)) { fails++; console.log(`FAIL sitemap missing ${p.path}`); }
+
+for (const t of testimonials) if (t.draft) { fails++; console.log(`FAIL testimonial from ${t.name} is a draft: get approval, then remove draft in src/content/proof.mjs`); }
 
 console.table(rows);
 console.log(fails ? `\n${fails} FAILED` : `\nAll checks passed on ${pages.length} pages.`);

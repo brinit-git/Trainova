@@ -1,4 +1,4 @@
-import { address, ticker, hero, plainHero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, cards, plans, faq, leadForm, fig, img, cta, related, consulting, training, guides, site, waLink } from '../ui.mjs';
+import { proofSection, address, ticker, hero, plainHero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, cards, plans, faq, leadForm, fig, img, cta, related, consulting, training, guides, site, waLink } from '../ui.mjs';
 
 const homeFaqs = [
   ['Are you a business management consultant or a business advisor?', 'Both words fit. Look for the best business consultant in Kerala and you will find business consulting firms offering everything from GST to strategy. Trainova BS is a business management consultant and business advisor in Kerala for owner-run companies, and our business consultancy services stick to how the company runs.'],
@@ -19,7 +19,7 @@ const home = {
   faqs: homeFaqs,
   body: [
     hero({
-      scene: 'Today, 7:42 pm · Your daughter’s school day',
+      scene: 'Today, 2:42 pm · Your daughter’s school day',
       quote: '“Sir, oru small doubt.”',
       after: 'Fifth call since morning. You step out of the hall again.',
       h1: 'Business consultant in Kerala for owners whose business stops when they stop.',
@@ -29,10 +29,10 @@ const home = {
         title: 'Calls from staff', count: 'Today · 5',
         items: [
           ['9:12 am', '“Sir, the client is asking for a discount. How much can I give?”'],
-          ['11:40 am', '“Sir, the vendor is here. Should I pay now or later?”'],
-          ['2:05 pm', '“Sir, where is that file from last year?”'],
-          ['4:30 pm', '“Sir, can you just check this once before I send?”'],
-          ['7:42 pm', '“Sir, oru small doubt.”', true],
+          ['10:40 am', '“Sir, the vendor is here. Should I pay now or later?”'],
+          ['11:55 am', '“Sir, where is that file from last year?”'],
+          ['1:20 pm', '“Sir, can you just check this once before I send?”'],
+          ['2:42 pm', '“Sir, oru small doubt.”', true],
         ],
       },
     }),
@@ -102,6 +102,7 @@ const home = {
       lines: ['You check your phone to see if it’s broken.', 'A problem got solved and you heard about it on Friday.', 'Your manager says “I decided” instead of “what should I do?”', 'Someone resigns, and you’re annoyed instead of scared.', 'At the viewpoint in Munnar, you are at the viewpoint.'],
       after: cta('Start with the free audit'),
     }),
+    proofSection(),
     band(`${head('Plans', 'What it costs, in plain numbers.', 'Compare it with what you pay a manager who still has to call you. Every plan starts with the free business audit.')}${plans()}<p style="margin-top:20px"><a href="/pricing/">See what each plan includes and how to choose</a></p>`, 'rule'),
     band(`<div class="two center">${fig('anas-gesture', 'Anas of Trainova BS explaining a point during a session, with a presentation screen in the background', 'Anas during a working session with founders and owner-operators.')}<div class="prose"><span class="eyebrow mono">Who you’ll talk to</span><h2>A person, not a pitch team.</h2><p>Trainova BS is built around one conviction Anas repeats often: an owner’s time should go to strategy and values, not babysitting. Our line for it is “Sculpting entrepreneurial chaos into scalable systems.”</p><p>When you message us, you’re not entering a call centre’s funnel. You’re starting a conversation about your business with the person who will be looking at it.</p><p><a href="/about/">More about Trainova BS</a> · <a href="/gallery/">See the photos</a> · <a href="/guides/">Read our free guides</a></p></div></div>`, 'sheetband'),
     notFor({
@@ -109,7 +110,7 @@ const home = {
       items: ['You want GST, company registration or a loan. Go to your CA.', 'You want motivation. Plenty of people do this well, and we’re not one of them.', 'You want someone to write documents and leave, with nothing changing.', 'You are not willing to let anyone else decide anything, ever. The system can’t fix that part.'],
     }),
     faq(homeFaqs),
-    leadForm({ from: 'Home page' }),
+    leadForm({ from: 'Home page', proof: false }),
   ].join(''),
 };
 
@@ -262,7 +263,7 @@ const contact = {
   body: [
     plainHero({ eyebrow: 'Contact', h1: 'Contact Trainova BS', lede: 'Tell us what’s going on in your business. You’ll get a reply from a person, in Malayalam or English.', extra: `<div class="cta"><a class="btn btn-go" href="${waLink}" rel="noopener">WhatsApp us</a><a class="btn btn-line" href="tel:${site.tel}">Call ${site.telText}</a></div>` }),
     band(`<div class="cards"><div class="card"><b>Phone and WhatsApp</b><span><a href="tel:${site.tel}">${site.telText}</a></span></div><div class="card"><b>Email</b><span><a href="mailto:${site.email}">${site.email}</a></span></div><div class="card"><b>Office</b><span>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}, ${site.country}<br><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}" rel="noopener">Open in Google Maps</a></span></div></div>`, 'tight'),
-    leadForm({ h2: 'Or send us a note from here.', from: 'Contact page' }),
+    leadForm({ h2: 'Or send us a note from here.', from: 'Contact page', proof: false }),
   ].join(''),
 };
 
