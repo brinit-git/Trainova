@@ -1,4 +1,4 @@
-import { proofSection, address, ticker, hero, plainHero, band, head, said, scenes, doc, beforeAfter, steps, wounds, afterState, notFor, cards, plans, faq, leadForm, fig, img, cta, related, consulting, training, guides, site, waLink } from '../ui.mjs';
+import { proofSection, address, ticker, hero, plainHero, band, head, said, neck, film, person, scenes, doc, beforeAfter, steps, flow, wounds, stacked, afterState, notFor, cards, plans, faq, leadForm, fig, img, cta, related, consulting, training, guides, site, waLink } from '../ui.mjs';
 
 const homeFaqs = [
   ['Are you a business management consultant or a business advisor?', 'Both words fit. Look for the best business consultant in Kerala and you will find business consulting firms offering everything from GST to strategy. Trainova BS is a business management consultant and business advisor in Kerala for owner-run companies, and our business consultancy services stick to how the company runs.'],
@@ -12,6 +12,14 @@ const homeFaqs = [
   ['Do you only work in Trivandrum?', 'We are based in Trivandrum and work with owners across Kerala. The parts that need to happen in your office happen in your office, and the rest runs on calls and WhatsApp.'],
 ];
 
+const staffCalls = [
+  ['9:12 am', '“Sir, the client is asking for a discount. How much can I give?”'],
+  ['10:40 am', '“Sir, the vendor is here. Should I pay now or later?”'],
+  ['11:55 am', '“Sir, where is that file from last year?”'],
+  ['1:20 pm', '“Sir, can you just check this once before I send?”'],
+  ['2:42 pm', '“Sir, oru small doubt.”', true],
+];
+
 const home = {
   path: '/', crumb: 'Home', keyword: 'business consultant in Kerala',
   title: 'Business Consultant in Kerala for MSMEs | Trainova BS',
@@ -19,28 +27,23 @@ const home = {
   faqs: homeFaqs,
   body: [
     hero({
+      stage: true,
       scene: 'Today, 2:42 pm · Your daughter’s school day',
-      quote: '“Sir, oru small doubt.”',
+      quote: '“Sir, oru<br>small <span class="hs-mark">doubt.”</span>',
       after: 'Fifth call since morning. You step out of the hall again.',
       h1: 'Business consultant in Kerala for owners whose business stops when they stop.',
       lede: 'Trainova BS builds the SOPs, clear roles and training that let your team decide without calling you. Based in <a href="/business-consultant-trivandrum/">Trivandrum</a>, working with MSMEs across Kerala.',
       note: 'The audit is free. You will know where your business depends on you, whether or not we ever work together.',
       log: {
         title: 'Calls from staff', count: 'Today · 5',
-        items: [
-          ['9:12 am', '“Sir, the client is asking for a discount. How much can I give?”'],
-          ['10:40 am', '“Sir, the vendor is here. Should I pay now or later?”'],
-          ['11:55 am', '“Sir, where is that file from last year?”'],
-          ['1:20 pm', '“Sir, can you just check this once before I send?”'],
-          ['2:42 pm', '“Sir, oru small doubt.”', true],
-        ],
+        items: staffCalls,
       },
     }),
     ticker(),
-    said({
+    neck({
       eyebrow: 'What you tell people',
       lines: ['It’s faster if I just do it myself.', 'Nobody here thinks like me.', 'Once this season is over, it will settle down.', 'Good staff don’t stay anyway.', 'I’ll take a proper holiday next year.', 'Ask me before you do anything.'],
-      h2: 'Business consulting for owners who have become the bottleneck.',
+      h2: 'Business consulting for owners who have become <span class="neck-mark">the bottleneck.</span>',
       paras: [
         'You started this so you would answer to nobody. Somewhere along the way you built a job with no leave, no fixed hours and your own money at risk, where forty people answer to you and you answer the phone.',
         'You already know this. You probably knew it last year. The trouble is that every fix you can see from where you are standing needs time you don’t have, and depends on people you have stopped trusting with anything important.',
@@ -58,7 +61,15 @@ const home = {
       ],
       closer: 'At home they’ve stopped commenting on it. That’s the part that should worry you.',
     }),
-    band(`<div class="vid"><video controls preload="none" playsinline poster="/assets/images/micromanagement-poster.webp" width="540" height="960" aria-label="Anas of Trainova BS on how micromanagement affects a business"><source src="/assets/video/micromanagement.mp4" type="video/mp4"></video><div class="prose"><span class="eyebrow mono">86 seconds · Malayalam and English</span><h2>Your time is for building the business, not babysitting it.</h2><p class="lead">Approval for every small matter. Every email checked. It drains productive hours and shatters a team’s ownership, and the person doing it usually thinks they are being careful.</p><p>In this short video, Anas explains what happens when the team comes to the owner for every small decision and every approval: how would they ever learn to decide? The answer is a strong system and process, so your time can go to strategy and core values. Read the full guide on <a href="/guides/stop-micromanaging-your-team/">how to stop micromanaging your team</a>.</p></div></div>`, 'rule'),
+    film({
+      eyebrow: '86 seconds · Malayalam and English',
+      lines: ['Your time is for', 'building the business,', 'not <span class="film-x">babysitting<svg viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 24C70 14 130 28 200 19S330 12 396 21"/></svg></span> it.'],
+      lead: 'Approval for every small matter. Every email checked. It drains productive hours and shatters a team’s ownership, and the person doing it usually thinks they are being careful.',
+      body: 'In this short video, Anas explains what happens when the team comes to the owner for every small decision and every approval: how would they ever learn to decide? The answer is a strong system and process, so your time can go to strategy and core values. Read the full guide on <a href="/guides/stop-micromanaging-your-team/">how to stop micromanaging your team</a>.',
+      src: '/assets/video/micromanagement.mp4',
+      poster: '/assets/images/micromanagement-poster.webp',
+      label: 'Anas of Trainova BS on how micromanagement affects a business',
+    }),
     beforeAfter({
       eyebrow: 'What you are actually buying',
       h2: 'One complaint. Two versions of your Tuesday.',
@@ -71,7 +82,7 @@ const home = {
         steps: ['Log it in the complaint sheet within 10 minutes.', 'Refund or replacement up to ₹2,000: decide yourself. No call needed.', 'Above ₹2,000: the operations manager decides the same day.', 'The owner sees a weekly summary, not each complaint.'],
       }),
     }),
-    steps({
+    flow({
       eyebrow: 'How we work',
       h2: 'From chaos to process, in six steps.',
       items: [
@@ -82,10 +93,10 @@ const home = {
         ['Leadership training', 'Managers learn to decide, and your values get written into how decisions are made.', 'people who stop calling you'],
         ['Tracking and optimisation', 'Internal audits show what is being followed and what isn’t. We refine from there.', 'numbers instead of a feeling'],
       ],
-      after: cta(),
+      end: `<h3>Step one is free.</h3><p>See where your business depends on you.</p>${cta()}`,
     }),
     band(`${head('What we do', 'Pick the problem you recognise.')}${cards(consulting)}<h3 style="margin-top:44px">Training for your team</h3>${cards(training)}`, 'rule'),
-    wounds({
+    stacked({
       eyebrow: 'You’ve probably tried this already',
       h2: 'Here’s what we won’t do to you again.',
       intro: 'Most owners who reach us have paid for help before. They rarely say how it went. They don’t need to.',
@@ -99,12 +110,28 @@ const home = {
     }),
     afterState({
       h2: 'The first Sunday it’s quiet.',
+      title: 'Calls from staff',
+      calls: staffCalls,
       lines: ['You check your phone to see if it’s broken.', 'A problem got solved and you heard about it on Friday.', 'Your manager says “I decided” instead of “what should I do?”', 'Someone resigns, and you’re annoyed instead of scared.', 'At the viewpoint in Munnar, you are at the viewpoint.'],
       after: cta('Start with the free audit'),
     }),
     proofSection(),
     band(`${head('Plans', 'What it costs, in plain numbers.', 'Compare it with what you pay a manager who still has to call you. Every plan starts with the free business audit.')}${plans()}<p style="margin-top:20px"><a href="/pricing/">See what each plan includes and how to choose</a></p>`, 'rule'),
-    band(`<div class="two center">${fig('anas-gesture', 'Anas of Trainova BS explaining a point during a session, with a presentation screen in the background', 'Anas during a working session with founders and owner-operators.')}<div class="prose"><span class="eyebrow mono">Who you’ll talk to</span><h2>A person, not a pitch team.</h2><p>Trainova BS is built around one conviction Anas repeats often: an owner’s time should go to strategy and values, not babysitting. Our line for it is “Sculpting entrepreneurial chaos into scalable systems.”</p><p>When you message us, you’re not entering a call centre’s funnel. You’re starting a conversation about your business with the person who will be looking at it.</p><p><a href="/about/">More about Trainova BS</a> · <a href="/gallery/">See the photos</a> · <a href="/guides/">Read our free guides</a></p></div></div>`, 'sheetband'),
+    person({
+      eyebrow: 'Who you’ll talk to',
+      lines: ['A person,', 'not a <span class="film-x">pitch team<svg viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 24C70 14 130 28 200 19S330 12 396 21"/></svg></span>.'],
+      photo: 'anas-speaking',
+      alt: 'Anas of Trainova BS explaining a point during a working session, with a presentation screen behind',
+      caption: 'Anas, in a working session with founders',
+      label: 'Between you and the person',
+      layers: ['Call centre', 'Sales executive', 'Pitch deck', 'Account manager'],
+      name: 'Anas.',
+      paras: [
+        'Trainova BS is built around one conviction Anas repeats often: an owner’s time should go to strategy and values, not babysitting. Our line for it is “Sculpting entrepreneurial chaos into scalable systems.”',
+        'When you message us, you’re not entering a call centre’s funnel. You’re starting a conversation about your business with the person who will be looking at it.',
+      ],
+      links: [['/about/', 'More about Trainova BS'], ['/gallery/', 'See the photos'], ['/guides/', 'Read our free guides']],
+    }),
     notFor({
       intro: 'Saying this saves us both a meeting.',
       items: ['You want GST, company registration or a loan. Go to your CA.', 'You want motivation. Plenty of people do this well, and we’re not one of them.', 'You want someone to write documents and leave, with nothing changing.', 'You are not willing to let anyone else decide anything, ever. The system can’t fix that part.'],

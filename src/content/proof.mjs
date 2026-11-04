@@ -7,7 +7,6 @@ export const customers = [
   ['blackbox-learning.webp', 'BlackBox Learning'],
   ['prception.webp', 'PRception'],
   ['lynklead.webp', 'LynkLead'],
-  ['senshin-marga.webp', 'Senshin Marga'],
   ['unirun-traders.webp', 'Unirun Traders'],
   ['exotica-lifespace.webp', 'Exotica Lifespace'],
   ['reach-us-business-hub.webp', 'Reach Us Business Hub'],

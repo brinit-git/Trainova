@@ -71,18 +71,31 @@ export const fig = (name, alt, cap, cls = '', sizes) => `<figure${cls ? ` class=
 export const cta = (label = 'Book my free business audit', href = '/free-business-audit/', note = '') =>
   `<div class="cta"><a class="btn btn-go" href="${href}">${label}</a><a class="btn btn-line" href="${waLink}" rel="noopener">WhatsApp us</a></div>${note ? `<p class="cta-note muted">${note}</p>` : ''}`;
 
-export function hero({ scene, quote, after, h1, lede, log, side, md, ctaLabel, ctaHref, note }) {
+// Decorative layer behind the home hero. Motion lives in site.css, so it stays still under reduced motion.
+const curve = (d) => `<path class="glow" d="${d}"/><path class="line draw" pathLength="1" d="${d}"/>`;
+const heroArt = `<svg class="hs-art" viewBox="0 0 1440 850" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="hsA" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fe08a" stop-opacity=".36"/><stop offset="1" stop-color="#4fe08a" stop-opacity="0"/></linearGradient>
+<linearGradient id="hsB" x1=".5" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#4fe08a" stop-opacity=".24"/><stop offset="1" stop-color="#4fe08a" stop-opacity="0"/></linearGradient>
+<pattern id="hsG" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M46 0H0V46" fill="none" stroke="#fff" stroke-opacity=".08"/></pattern>
+<radialGradient id="hsF"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<mask id="hsM"><circle cx="1340" cy="770" r="190" fill="url(#hsF)"/></mask>
+</defs><rect width="1440" height="850" fill="url(#hsG)" mask="url(#hsM)"/>
+<g transform="translate(1440) scale(.6) translate(-1440)"><path fill="url(#hsA)" opacity=".7" d="M1300-10C1250 90 1130 170 960 205 1150 215 1300 130 1390-10Z"/>${curve('M1300-10C1250 90 1130 170 960 205')}</g>
+<g transform="translate(1440 850) scale(.55) translate(-1440 -850)"><path fill="url(#hsB)" opacity=".7" d="M720 860C810 730 920 640 1030 630 1150 620 1260 710 1340 860Z"/>${curve('M720 860C810 730 920 640 1030 630 1150 620 1260 710 1340 860')}</g>
+<g class="spark">${[[1385, 190, 0], [1345, 690, 2.5]].map(([x, y, t]) => `<g transform="translate(${x} ${y})"><path class="tw" style="--t:${t}s" d="M0-8V8M-8 0H8"/></g>`).join('')}</g></svg>`;
+
+export function hero({ scene, quote, after, h1, lede, log, side, md, ctaLabel, ctaHref, note, stage }) {
   const right = log
     ? `<div class="log" role="img" aria-label="A list of calls from staff to the business owner through one day"><div class="log-head mono"><span>${log.title}</span><span>${log.count}</span></div><ul>${log.items.map(([t, x, hot], i) => `<li${hot ? ' class="hot"' : ''} style="--n:${i}"><span class="t">${t}</span><span>${x}</span></li>`).join('')}</ul></div>`
     : side || '';
-  return `<section class="hero dark"><div class="wrap"><div class="hero-grid"><div>
+  return `<section class="hero dark${stage ? ' hero-stage' : ''}">${stage ? heroArt : ''}<div class="wrap"><div class="hero-grid"><div>
 ${scene ? `<span class="scene mono">${scene}</span>` : ''}
 <p class="quote${md ? ' q-md' : ''}">${quote}</p>
 ${after ? `<p class="after-quote">${after}</p>` : ''}
 <h1>${h1}</h1>
 <p class="lead">${lede}</p>
-${cta(ctaLabel, ctaHref, note)}
-</div>${right ? `<div>${right}</div>` : ''}</div></div></section>`;
+${cta(ctaLabel, ctaHref, stage ? '' : note)}
+</div>${right ? `<div>${right}${stage && note ? `<p class="cta-note muted">${note}</p>` : ''}</div>` : ''}</div></div></section>`;
 }
 
 // A short page head for pages that do not open on a scene.
@@ -95,6 +108,32 @@ export const head = (eyebrow, h2, intro = '') => `${eyebrow ? `<span class="eyeb
 export const said = ({ eyebrow, lines, h2, paras, right = '' }) => band(`${eyebrow ? `<span class="eyebrow mono">${eyebrow}</span>` : ''}<ul class="said">${lines.map((l) => `<li>“${l}”</li>`).join('')}</ul>
 <div class="two"><h2>${h2}</h2><div class="prose">${paras.map((p) => `<p>${p}</p>`).join('')}${right}</div></div>`);
 
+// The home hero's thread runs into this section: each line feeds one point, which then opens onto the h2. Motion lives in site.js and site.css, and the section reads as a plain list without it.
+export const neck = ({ eyebrow, lines, h2, paras }) => `<section class="neck">
+<svg class="neck-bridge" aria-hidden="true" focusable="false"><defs><linearGradient id="nkG" gradientUnits="userSpaceOnUse"><stop stop-color="#ff8080"/><stop offset=".55" stop-color="#4fe08a"/></linearGradient></defs><path class="line" pathLength="1"/><circle class="seed" r="4"/><circle class="halo" r="12"/><circle class="tip" r="3.5"/></svg>
+<div class="neck-track"><div class="neck-stage dark">
+<svg class="neck-svg" aria-hidden="true" focusable="false"><path class="spine" pathLength="1"/>${lines.map(() => '<path class="rib" pathLength="1"/><circle class="nod" r="3"/>').join('')}<circle class="halo" r="12"/><circle class="tip" r="3.5"/><circle class="ring" r="14"/><circle class="pinch" r="4"/></svg>
+<div class="wrap"><span class="eyebrow mono">${eyebrow}</span><ul class="neck-lines">${lines.map((l) => `<li>“${l}”</li>`).join('')}</ul></div>
+<div class="neck-open" aria-hidden="true"><i></i><i></i></div>
+</div></div>
+<div class="neck-read"><div class="wrap"><h2>${h2}</h2><div class="neck-body">${paras.map((p) => `<p>${p}</p>`).join('')}</div></div></div>
+</section>`;
+
+// Playing the video dims the lights.
+export const film = ({ eyebrow, lines, lead, body, src, poster, label }) => `<section class="film">
+<div class="wrap film-grid"><div class="film-copy"><span class="eyebrow mono">${eyebrow}</span><h2 class="film-h">${lines.map((l) => `<span>${l}</span>`).join(' ')}</h2><div class="film-body"><p class="lead">${lead}</p><p>${body}</p></div></div>
+<div class="film-stage"><div class="film-frame"><video controls preload="none" playsinline poster="${poster}" width="540" height="960" aria-label="${label}"><source src="${src}" type="video/mp4"></video></div></div></div>
+</section>`;
+
+// Each layer a firm usually puts between you and the person is a pane of glass over the photo. Scrolling slides them off one by one and strikes them from the list. Motion lives in site.js and site.css, and without it the photo is clear and the list already struck.
+export const person = ({ eyebrow, lines, photo, alt, caption, label, layers, name, paras, links }) => `<section class="who dark"><div class="who-track"><div class="who-stage"><div class="wrap who-copy">
+<span class="eyebrow mono">${eyebrow}</span><h2 class="who-h">${lines.map((l) => `<span>${l}</span>`).join(' ')}</h2>
+<figure class="who-pic">${img(photo, alt, '(max-width:860px) 100vw, 40vw')}<div class="who-panes" aria-hidden="true">${layers.map((l, i) => `<i style="--i:${i}"><span><b class="mono">${String(i + 1).padStart(2, '0')}</b>${l}</span></i>`).join('')}</div><figcaption class="mono">${caption}</figcaption>
+<a class="who-bub" href="${waLink}" rel="noopener"><span class="mono">Your first message</span><q>Hi Anas, I saw your website and I’d like to talk about my business.</q><b>Send it on WhatsApp <i aria-hidden="true">→</i></b></a></figure>
+<div class="who-foot"><div class="who-list"><p class="mono"><span>${label}</span><span class="who-n">0</span></p><ol class="who-chain">${layers.map((l) => `<li><span class="sr">No </span>${l}</li>`).join('')}<li class="me">${name}</li></ol></div>
+<div class="who-read">${paras.map((p) => `<p>${p}</p>`).join('')}<p class="who-links">${links.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</p></div></div>
+</div></div></div></section>`;
+
 export const scenes = ({ eyebrow, h2, intro, items, closer, after = '' }) => band(`${head(eyebrow, h2, intro)}<ul class="scenes">${items.map(([t, who, what]) => `<li><span class="t mono">${t}</span><h3>${who}</h3><p>${what}</p></li>`).join('')}</ul>${closer ? `<p class="closer">${closer}</p>` : ''}${after}`, 'dark');
 
 export const doc = ({ id, title, meta, steps, note = 'Sample for illustration. Yours is written with your team, in your numbers.' }) => `<div class="doc"><div class="doc-head mono"><span>${id}</span><span class="green">Approved</span></div><p class="doc-title">${title}</p><dl>${meta.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl><ol>${steps.map((s) => `<li><span>${s}</span></li>`).join('')}</ol><p class="doc-note">${note}</p></div>`;
@@ -103,9 +142,22 @@ export const beforeAfter = ({ eyebrow, h2, intro, chainLabel, chain, document, c
 
 export const steps = ({ eyebrow, h2, intro, items, cols = 3, cls = 'rule', after = '' }) => band(`${head(eyebrow, h2, intro)}<ol class="steps${cols === 2 ? ' c2' : ''}">${items.map(([t, d, get]) => `<li><h3>${t}</h3><p>${d}</p>${get ? `<p class="get">You get: ${get}</p>` : ''}</li>`).join('')}</ol>${after}`, cls);
 
+// A thread runs through the steps, rough at the start and straight by the end. Pinning and the thread live in site.js and site.css, and without them this is a plain sideways scroller.
+export const flow = ({ eyebrow, h2, intro, items, end }) => `<section class="band rule flow"><div class="flow-stage"><div class="wrap">${head(eyebrow, h2, intro)}</div>
+<div class="flow-view" tabindex="0" role="region" aria-label="${esc(h2)}"><div class="flow-track"><svg class="flow-line" aria-hidden="true" focusable="false"><defs><linearGradient id="flG" gradientUnits="userSpaceOnUse"><stop stop-color="#c80f2e"/><stop offset=".3" stop-color="#00763a"/></linearGradient></defs><path class="base"/><path class="ink" pathLength="1"/>${items.map(() => '<circle class="nod" r="5"/>').join('')}<circle class="nod" r="5"/><circle class="halo" r="13"/><circle class="tip" r="4.5"/></svg>
+<ol class="flow-list">${items.map(([t, d, get]) => `<li><h3>${t}</h3><p>${d}</p><p class="get"><span class="mono">You get:</span> ${get}</p></li>`).join('')}</ol>
+<div class="flow-end dark">${end}</div></div></div></div></section>`;
+
 export const wounds = ({ eyebrow, h2, intro, items, cls = 'sheetband', after = '' }) => band(`${head(eyebrow, h2, intro)}<ul class="wounds">${items.map(([w, f]) => `<li><p class="wound">${w}</p><p class="fix">${f}</p></li>`).join('')}</ul>${after}`, cls);
 
-export const afterState = ({ h2, lines, after = '' }) => band(`<h2>${h2}</h2><ul class="after">${lines.map((l) => `<li>${l}</li>`).join('')}</ul>${after}`, 'dark');
+// wounds as a deck: the heading stays pinned while the cards stack over each other. Sticky does the stacking, so it still works without site.js.
+export const stacked = ({ eyebrow, h2, intro, items }) => band(`<div class="st-grid"><div class="st-side">${head(eyebrow, h2, intro)}</div><ol class="st-list">${items.map(([w, f], i) => `<li style="--i:${i}"><p class="st-n mono"><span>${String(i + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}</span><i aria-hidden="true">✕</i></p><p class="st-t">${w}</p><p class="st-f">${f}</p></li>`).join('')}</ol></div>`, 'sheetband st');
+
+export const afterState = ({ h2, lines, calls, title, after = '' }) => `<section class="quiet dark"><div class="quiet-track"><div class="quiet-stage">
+<div class="qh" aria-hidden="true"><i></i></div>
+<div class="qp" aria-hidden="true"><div class="qp-shell"><div class="qp-screen"><p class="qp-bar mono"><span>Sunday</span><span class="qp-sig"><b></b><b></b><b></b><b></b></span></p><p class="qp-clock">11:00</p><p class="qp-head mono"><span>${title}</span><span class="qp-n">${calls.length}</span></p><div class="qp-list"><ul>${calls.map(([t, x, hot]) => `<li${hot ? ' class="hot"' : ''}><span class="mono">${t}</span>${x}</li>`).join('')}</ul><p class="qp-empty mono">No calls.<br>Full signal.</p></div></div></div></div>
+<div class="wrap quiet-copy"><h2>${h2}</h2><ul class="quiet-lines">${lines.map((l) => `<li>${l}</li>`).join('')}</ul>${after}</div>
+</div></div></section>`;
 
 export const notFor = ({ h2 = 'Who we are not for', intro, items }) => band(`<div class="two"><div><h2>${h2}</h2>${intro ? `<p>${intro}</p>` : ''}</div><ul class="crosses">${items.map((x) => `<li>${x}</li>`).join('')}</ul></div>`, 'rule');
 
