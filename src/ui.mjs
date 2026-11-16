@@ -50,10 +50,17 @@ export const guides = [
   ['/guides/how-to-scale-a-small-business/', 'How to scale a small business', 'What to fix before you grow'],
   ['/guides/how-to-be-a-good-telecaller/', 'How to be a good telecaller', 'For callers and the owners who hire them'],
 ];
+export const blog = [
+  ['/blog/whatsapp-business-ai-small-business-india/', 'WhatsApp Business AI for small businesses', 'What it does, and what to write down first'],
+  ['/blog/labour-codes-for-small-business-kerala/', 'Labour codes for small business owners', 'A practical Kerala checklist'],
+  ['/blog/45-day-payment-rule-msme/', 'The 45 day payment rule for MSMEs', 'What to do as a buyer and as a supplier'],
+  ['/blog/reduce-employee-attrition-small-business/', 'How to reduce employee attrition', 'Fix the first six months first'],
+  ['/blog/how-to-choose-an-seo-agency-kerala/', 'How to choose an SEO agency in Kerala', 'Eight questions to ask first'],
+];
 
 const esc = (s) => String(s).replace(/&(?!amp;|lt;|gt;|quot;)/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const waText = (msg) => `${site.wa}?text=${encodeURIComponent(msg)}`;
-export const waLink = waText('Hi Anas, I saw your website and I’d like to talk about my business.');
+export const waLink = waText('Hi, I saw your website and I’d like to talk about my business.');
 
 const IMG = {
   'anas-speaking': [480, 960, 1280 / 960], 'anas-gesture': [480, 960, 720 / 960], 'anas-boardroom': [480, 960, 720 / 960],
@@ -68,8 +75,11 @@ export function img(name, alt, sizes = '(max-width:860px) 100vw, 50vw') {
 }
 export const fig = (name, alt, cap, cls = '', sizes) => `<figure${cls ? ` class="${cls}"` : ''}>${img(name, alt, sizes)}${cap ? `<figcaption>${cap}</figcaption>` : ''}</figure>`;
 
+const waIcon = '<svg class="wa-i" viewBox="0 0 32 32" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.04 3C9.4 3 4.02 8.37 4.02 15c0 2.12.55 4.18 1.6 6L4 29l8.2-1.58A12 12 0 0 0 16.04 27C22.67 27 28 21.63 28 15S22.67 3 16.04 3Zm0 21.9a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.86.94.98-4.74-.24-.37A9.86 9.86 0 0 1 6.1 15c0-5.46 4.46-9.9 9.94-9.9 5.47 0 9.9 4.44 9.9 9.9s-4.43 9.9-9.9 9.9Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>';
+export const waBtn = (label = 'WhatsApp us', href = waLink, cls = 'btn btn-line btn-wa') => `<a class="${cls}" href="${href}" rel="noopener">${waIcon}${label}</a>`;
+
 export const cta = (label = 'Book my free business audit', href = '/free-business-audit/', note = '') =>
-  `<div class="cta"><a class="btn btn-go" href="${href}">${label}</a><a class="btn btn-line" href="${waLink}" rel="noopener">WhatsApp us</a></div>${note ? `<p class="cta-note muted">${note}</p>` : ''}`;
+  `<div class="cta"><a class="btn btn-go" href="${href}">${label}</a>${waBtn()}</div>${note ? `<p class="cta-note muted">${note}</p>` : ''}`;
 
 // Decorative layer behind the home hero. Motion lives in site.css, so it stays still under reduced motion.
 const curve = (d) => `<path class="glow" d="${d}"/><path class="line draw" pathLength="1" d="${d}"/>`;
@@ -129,7 +139,7 @@ export const film = ({ eyebrow, lines, lead, body, src, poster, label }) => `<se
 export const person = ({ eyebrow, lines, photo, alt, caption, label, layers, name, paras, links }) => `<section class="who dark"><div class="who-track"><div class="who-stage"><div class="wrap who-copy">
 <span class="eyebrow mono">${eyebrow}</span><h2 class="who-h">${lines.map((l) => `<span>${l}</span>`).join(' ')}</h2>
 <figure class="who-pic">${img(photo, alt, '(max-width:860px) 100vw, 40vw')}<div class="who-panes" aria-hidden="true">${layers.map((l, i) => `<i style="--i:${i}"><span><b class="mono">${String(i + 1).padStart(2, '0')}</b>${l}</span></i>`).join('')}</div><figcaption class="mono">${caption}</figcaption>
-<a class="who-bub" href="${waLink}" rel="noopener"><span class="mono">Your first message</span><q>Hi Anas, I saw your website and I’d like to talk about my business.</q><b>Send it on WhatsApp <i aria-hidden="true">→</i></b></a></figure>
+<a class="who-bub" href="${waLink}" rel="noopener"><span class="mono">Your first message</span><q>Hi, I saw your website and I’d like to talk about my business.</q><b>Send it on WhatsApp <i aria-hidden="true">→</i></b></a></figure>
 <div class="who-foot"><div class="who-list"><p class="mono"><span>${label}</span><span class="who-n">0</span></p><ol class="who-chain">${layers.map((l) => `<li><span class="sr">No </span>${l}</li>`).join('')}<li class="me">${name}</li></ol></div>
 <div class="who-read">${paras.map((p) => `<p>${p}</p>`).join('')}<p class="who-links">${links.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</p></div></div>
 </div></div></div></section>`;
@@ -167,7 +177,7 @@ export const cards = (items, label = 'Read more') => `<div class="cards${items.l
 export const ticker = () => { const names = [...consulting, ...training.slice(1)].map(([, t]) => `<span class="mono">${t}</span>`).join(''); return `<div class="tick" aria-hidden="true"><div>${names}${names}</div></div>`; };
 
 export const related = (h2, paths, label) => {
-  const all = [...consulting, ...training, ...guides, ...extraLinks];
+  const all = [...consulting, ...training, ...guides, ...blog, ...extraLinks];
   return band(`<h2>${h2}</h2>${cards(paths.map((p) => all.find((x) => x[0] === p) || (() => { throw new Error('related: unknown ' + p); })()), label)}`, 'rule');
 };
 export const extraLinks = [
@@ -178,6 +188,7 @@ export const extraLinks = [
   ['/business-consultant-kochi/', 'Business consultant in Kochi', 'For owners in Ernakulam district'],
   ['/business-consultant-calicut/', 'Business consultant in Calicut', 'For owners in Kozhikode and Malabar'],
   ['/guides/', 'Free guides', 'Everything we would tell you on a call'],
+  ['/blog/', 'Blog', 'News and what it means for your business'],
   ['/', 'Trainova BS home', 'Business consultant in Kerala'],
 ];
 
@@ -187,10 +198,10 @@ export const plans = (heading = true) => {
     { n: 'Silver package', t: 'Growth Accelerator', p: '₹24,999', f: 'For a growing team that needs its work written down.', i: ['Everything in Basic, plus:', 'Internal audits and process optimisation', 'Leadership and team development', 'Custom SOP documentation', 'Priority support'], best: 1 },
     { n: 'Platinum package', t: 'Full-Scale Transformation', p: '₹49,999', f: 'For the business ready to run without the owner in every room.', i: ['Everything in Silver, plus:', 'Complete organisational support', 'Strategic planning (SWOT, KRA)', 'Marketing integration with the BrinIT team', 'Full SOP and process automation'] },
   ];
-  return `<div class="plans">${data.map((x) => `<div class="plan${x.best ? ' best' : ''}"><span class="tag mono">${x.n}</span><h3>${x.t}</h3><p class="price">${x.p}</p><p class="per">per month, or custom pricing</p><p class="for">${x.f}</p><ul>${x.i.map((l) => `<li>${l}</li>`).join('')}</ul><a class="btn ${x.best ? 'btn-go' : 'btn-line'}" href="/free-business-audit/">Start with the free audit</a></div>`).join('')}</div>`;
+  return `<div class="plans">${data.map((x) => `<div class="plan${x.best ? ' best' : ''}"><span class="tag mono">${x.n}</span><h3>${x.t}</h3><p class="price">${x.p}</p><p class="per">per month, or custom pricing</p><p class="for">${x.f}</p><ul>${x.i.map((l) => `<li>${l}</li>`).join('')}</ul><a class="btn ${x.best ? 'btn-go' : 'btn-line'}" href="/free-business-audit/">Start with the free audit</a>${waBtn(`Ask about ${x.t} on WhatsApp`, waText(`Hi, I’m looking at the ${x.t} plan (${x.p}) on your website. Can we talk?`), 'wa-link')}</div>`).join('')}</div>`;
 };
 
-export const faq = (items, h2 = 'Questions owners ask us', eyebrow = '') => band(`${head(eyebrow, h2)}<div class="faq">${items.map(([q, a]) => `<details><summary><h3>${q}</h3></summary><div class="a"><p>${a}</p></div></details>`).join('')}</div>`, 'rule');
+export const faq = (items, h2 = 'Questions owners ask us', eyebrow = '') => band(`${head(eyebrow, h2)}<div class="faq">${items.map(([q, a]) => `<details><summary><h3>${q}</h3></summary><div class="a"><p>${a}</p></div></details>`).join('')}</div><div class="faq-wa"><p><b>Your question isn’t here?</b> Message us directly and get a reply from a person.</p>${waBtn('Ask on WhatsApp', waLink, 'btn btn-go btn-wa')}</div>`, 'rule');
 
 // One group must be wider than the widest screen, so short lists repeat inside it. Two groups slide -50% and loop.
 const TILE = 214;
@@ -234,14 +245,14 @@ const header = (path) => {
   const mobile = [
     `<details class="mg" name="m" style="--n:0"><summary>Consulting</summary><div class="mg-l">${consulting.map(([h, t]) => `<a href="${h}"${current(path, h)}>${t}</a>`).join('')}</div></details>`,
     `<details class="mg" name="m" style="--n:1"><summary>Training</summary><div class="mg-l">${training.map(([h, t]) => `<a href="${h}"${current(path, h)}>${t}</a>`).join('')}</div></details>`,
-    ...[['/pricing/', 'Pricing'], ['/guides/', 'Guides'], ['/about/', 'About'], ['/gallery/', 'Gallery'], ['/contact/', 'Contact']].map(([h, t], i) => `<a href="${h}" style="--n:${i + 2}"${current(path, h)}>${t}</a>`),
+    ...[['/pricing/', 'Pricing'], ['/guides/', 'Guides'], ['/blog/', 'Blog'], ['/about/', 'About'], ['/gallery/', 'Gallery'], ['/contact/', 'Contact']].map(([h, t], i) => `<a href="${h}" style="--n:${i + 2}"${current(path, h)}>${t}</a>`),
   ].join('');
   return `<a class="skip" href="#main">Skip to content</a><header class="top"><div class="bar"><span class="ind" aria-hidden="true"></span>
 <a class="logo" href="/" aria-label="Trainova BS home"><img src="/assets/images/logo-white.webp" width="544" height="147" alt="Trainova BS"></a>
 <nav class="nav" aria-label="Main"><ul class="links">
 ${megaMenu(path, 'mega-consulting', 'Consulting', consulting, inConsulting, feature('f1', '/free-business-audit/', 'Start here', 'Free business audit', 'See where your business depends on you.'))}
 ${megaMenu(path, 'mega-training', 'Training', training, inTraining, feature('f2', '/corporate-training/#talk', 'For your team', 'Ask about a batch', 'Tell us your team size and what should change.'))}
-${navLink(path, '/pricing/', 'Pricing')}${navLink(path, '/guides/', 'Guides', path.startsWith('/guides/'))}${navLink(path, '/about/', 'About')}${navLink(path, '/contact/', 'Contact')}
+${navLink(path, '/pricing/', 'Pricing')}${navLink(path, '/guides/', 'Guides', path.startsWith('/guides/'))}${navLink(path, '/blog/', 'Blog', path.startsWith('/blog/'))}${navLink(path, '/about/', 'About')}${navLink(path, '/contact/', 'Contact')}
 </ul></nav>
 <div class="bar-end"><a class="bar-tel" href="tel:${site.tel}">${site.telText}</a><a class="bar-cta" href="/free-business-audit/">Free business audit <i aria-hidden="true">→</i></a>
 <details class="burger"><summary aria-label="Open menu"><span class="bx" aria-hidden="true"><i></i><i></i></span></summary><div class="mp"><nav class="mp-nav" aria-label="Mobile">${mobile}</nav>
@@ -252,11 +263,11 @@ ${navLink(path, '/pricing/', 'Pricing')}${navLink(path, '/guides/', 'Guides', pa
 const list = (title, items) => `<div><h2>${title}</h2><ul>${items.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}</ul></div>`;
 const footer = `<footer class="foot"><div class="wrap"><div class="foot-grid">
 <div><img src="/assets/images/logo-white.webp" width="544" height="147" alt="Trainova BS" loading="lazy"><p>From chaos to process. We help Kerala’s MSMEs build the systems that let a business run without its owner in every room.</p>
-<address>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}, ${site.country}<br><a href="tel:${site.tel}">${site.telText}</a><br><a href="mailto:${site.email}">${site.email}</a></address>
+<address>${site.legal}<br>${site.street}<br>${site.city}, ${site.region} ${site.pin}, ${site.country}<br><a href="tel:${site.tel}">${site.telText}</a><br><a href="${waLink}" rel="noopener">Message us on WhatsApp</a><br><a href="mailto:${site.email}">${site.email}</a></address>
 <p><a href="${site.sameAs[0]}" rel="noopener">Instagram</a> · <a href="${site.sameAs[1]}" rel="noopener">LinkedIn</a> · <a href="${site.sameAs[2]}" rel="noopener">Facebook</a></p></div>
 ${list('Consulting', [...consulting, ['/business-consultant-trivandrum/', 'Business consultant, Trivandrum'], ['/business-consultant-kochi/', 'Business consultant, Kochi'], ['/business-consultant-calicut/', 'Business consultant, Calicut']])}
 ${list('Training', training)}
-${list('Company', [['/free-business-audit/', 'Free business audit'], ['/pricing/', 'Plans and fees'], ['/about/', 'About'], ['/gallery/', 'Gallery'], ['/guides/', 'Guides'], ...guides.map(([h, t]) => [h, t]), ['/contact/', 'Contact'], ['/privacy-policy/', 'Privacy policy']])}
+${list('Company', [['/free-business-audit/', 'Free business audit'], ['/pricing/', 'Plans and fees'], ['/about/', 'About'], ['/gallery/', 'Gallery'], ['/guides/', 'Guides'], ...guides.map(([h, t]) => [h, t]), ['/blog/', 'Blog'], ...blog.map(([h, t]) => [h, t]), ['/contact/', 'Contact'], ['/privacy-policy/', 'Privacy policy']])}
 </div><div class="legal"><span>© ${new Date().getFullYear()} ${site.legal}. All rights reserved.</span><span>Website designed by <a href="https://www.prception.in" rel="noopener">PRception</a></span></div></div></footer>
 <div class="mbar"><a href="tel:${site.tel}">Call</a><a href="${waLink}" rel="noopener">WhatsApp</a><a href="/free-business-audit/">Free audit</a></div>`;
 
@@ -287,6 +298,9 @@ function schema(p) {
   if (p.faqs?.length) graph.push({ '@type': 'FAQPage', mainEntity: p.faqs.map(([q, a]) => ({ '@type': 'Question', name: strip(q), acceptedAnswer: { '@type': 'Answer', text: strip(a) } })) });
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 }
+
+// Floating WhatsApp button on every page. The message names the page the visitor was reading, so you know which page the lead came from.
+const float = (p) => `<a class="wa-float" href="${p.path === '/' ? waLink : waText(`Hi, I’m reading your “${strip(p.crumb || p.title)}” page and I’d like to talk about my business.`)}" rel="noopener" aria-label="Chat with us on WhatsApp">${waIcon}<span class="wa-t"><b>Chat with us on WhatsApp</b><small>Replies from a real person.</small></span></a>`;
 
 export function render(p, css, js) {
   const url = site.url + p.path;
@@ -329,6 +343,7 @@ ${crumbs}
 ${p.body}
 </main>
 ${footer}
+${float(p)}
 <script>${js}</script>
 </body>
 </html>

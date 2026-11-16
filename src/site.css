@@ -816,4 +816,31 @@ legend{padding:0;margin-bottom:10px;font:600 clamp(1.15rem,2.3vw,1.6rem)/1.3 var
 @keyframes hs-bar{from{transform:scaleY(0)}}
 @keyframes stamp{from{opacity:0;transform:scale(1.8) rotate(-7deg)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq{overflow-x:auto}.mq-dup,.mq-pause{display:none}.mq::before,.mq::after{display:none}}
-@media print{.mq-dup,.mq-pause,.tms-nav,.hero::after,.hero::before,.hs-art,.top,.mbar,.lead-sec,.tick,.toc,.rail{display:none}.rv{opacity:1!important;transform:none!important}.crumbs{padding-top:12px}.flow{height:auto!important}.flow-view{overflow:visible}.flow-track{display:block;width:auto;transform:none!important}.flow-line,.flow-end{display:none!important}.flow-list{flex-wrap:wrap}.flow-list li{flex:1 1 40%;opacity:1!important}}
+@media print{.wa-float,.faq-wa,.wa-link,.mq-dup,.mq-pause,.tms-nav,.hero::after,.hero::before,.hs-art,.top,.mbar,.lead-sec,.tick,.toc,.rail{display:none}.rv{opacity:1!important;transform:none!important}.crumbs{padding-top:12px}.flow{height:auto!important}.flow-view{overflow:visible}.flow-track{display:block;width:auto;transform:none!important}.flow-line,.flow-end{display:none!important}.flow-list{flex-wrap:wrap}.flow-list li{flex:1 1 40%;opacity:1!important}}
+
+/* WhatsApp: floating pill on every page, plus the inline buttons */
+.wa-i{flex:none}
+.btn-wa{display:inline-flex;align-items:center;gap:8px}
+.btn-wa.btn-go::after{content:none}
+.wa-link{display:flex;align-items:center;gap:8px;margin-top:12px;font-weight:700;font-size:.92rem;text-decoration:none}
+.wa-link:hover{text-decoration:underline}
+.faq-wa{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:28px;padding:20px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--sheet)}
+.faq-wa p{margin:0;flex:1 1 260px}
+.wa-float{position:fixed;right:clamp(14px,2vw,28px);bottom:clamp(14px,2vw,28px);z-index:45;display:flex;align-items:center;gap:12px;padding:12px 22px 12px 16px;border-radius:999px;background:#25d366;color:#06210f;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.28);transition:transform .3s var(--e),box-shadow .3s var(--e)}
+.dark .wa-float,.wa-float:hover{color:#06210f}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.34)}
+.wa-float:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--ink)}
+.wa-float .wa-i{width:30px;height:30px}
+.wa-t{display:flex;flex-direction:column;line-height:1.2}
+.wa-t b{font-size:.98rem}
+.wa-t small{font-size:.78rem;font-weight:600;opacity:.85}
+@media(prefers-reduced-motion:no-preference){
+ .wa-float::before{content:"";position:absolute;inset:0;border-radius:inherit;background:#25d366;z-index:-1;animation:waPulse 2.6s ease-out infinite}
+ @keyframes waPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.35,1.6);opacity:0}}
+}
+@media(max-width:860px){
+ .wa-float{right:12px;bottom:calc(54px + 12px + env(safe-area-inset-bottom));padding:10px 16px 10px 12px;gap:8px}
+ .wa-float .wa-i{width:26px;height:26px}
+ .wa-t b{font-size:.88rem}
+ .wa-t small{display:none}
+}

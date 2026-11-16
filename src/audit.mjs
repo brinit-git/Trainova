@@ -8,9 +8,10 @@ import core from './content/core.mjs';
 import consulting from './content/consulting.mjs';
 import training from './content/training.mjs';
 import guides from './content/guides.mjs';
+import blog from './content/blog.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = [...core, ...consulting, ...training, ...guides].filter((p) => !p.noindex);
+const pages = [...core, ...consulting, ...training, ...guides, ...blog].filter((p) => !p.noindex);
 const fileOf = (path) => join(root, path.slice(1), 'index.html');
 const tidy = (s) => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 const lc = (s) => s.toLowerCase().replace(/[’']/g, "'");
@@ -42,6 +43,11 @@ const SECONDARY = {
   '/guides/sop-examples-for-business/': ['example of an SOP in business', 'SOP in customer service'],
   '/guides/kra-examples-small-business/': ['KRA examples for employees', 'KRA examples for managers', 'KRA and KPI'],
   '/guides/how-to-scale-a-small-business/': ['scale a service business', 'growth'],
+  '/blog/whatsapp-business-ai-small-business-india/': ['Your Business AI', 'WhatsApp Business app', 'WhatsApp chatbot'],
+  '/blog/labour-codes-for-small-business-kerala/': ['appointment letter', 'gratuity', 'minimum wages'],
+  '/blog/45-day-payment-rule-msme/': ['Section 43B(h)', 'Udyam', 'MSMED'],
+  '/blog/reduce-employee-attrition-small-business/': ['stay interview', 'onboarding', 'one-to-one'],
+  '/blog/how-to-choose-an-seo-agency-kerala/': ['Google Business Profile', 'guarantee', 'Search Console'],
   '/guides/how-to-be-a-good-telecaller/': ['effective telecalling', 'telecalling tips', 'what is telecalling'],
 };
 const AI_WORDS = /\b(delve|tapestry|seamless(ly)?|leverag(e|ing)|elevate your|unlock your|game.?changer|cutting.?edge|robust|holistic|synerg|in today's (fast|digital|competitive)|landscape of|empower(ing)? your)\b/i;
@@ -116,7 +122,7 @@ for (const p of pages) {
   if (/undefined|\[object|TODO|lorem/i.test(text)) bad('template leak');
   const emDash = (text.match(/—/g) || []).length;
   if (emDash > 0) bad(`${emDash} em dashes`);
-  const minWords = ['/privacy-policy/', '/contact/', '/guides/', '/gallery/'].includes(p.path) ? 60 : 450;
+  const minWords = ['/privacy-policy/', '/contact/', '/guides/', '/blog/', '/gallery/'].includes(p.path) ? 60 : 450;
   if (words < minWords) bad(`thin: ${words} words`);
   for (const term of SECONDARY[p.path] || []) if (!lc(text).includes(lc(term))) bad(`secondary keyword missing: ${term}`);
   const inFirst = lc(text.split(' ').slice(0, 80).join(' ')).includes(k);

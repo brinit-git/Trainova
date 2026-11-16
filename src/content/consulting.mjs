@@ -75,7 +75,7 @@ const sop = {
       after: `<p style="margin-top:24px">Want to try it yourself first? Read <a href="/guides/how-to-write-an-sop/">how to write an SOP</a> or copy our <a href="/guides/sop-examples-for-business/">SOP examples</a>.</p>${cta()}`,
     }),
     faq(sopFaqs, 'Questions about SOP consulting'),
-    related('Works well with', ['/process-training/', '/kra-consulting/', '/business-process-consulting/']),
+    related('Works well with', ['/blog/45-day-payment-rule-msme/', '/kra-consulting/', '/business-process-consulting/']),
     leadForm({ h2: 'Which job would you document first?', needs: ['Only I know how things work', 'Every new hire starts from zero', 'A key person is about to leave', 'We’re opening a new branch', 'We have SOPs but nobody follows them', 'I don’t know where to start'], from: 'SOP consulting page' }),
   ].join(''),
 };
@@ -194,7 +194,7 @@ const automation = {
       after: cta(),
     }),
     faq(autoFaqs, 'Questions about business automation'),
-    related('Start with the process', ['/business-process-consulting/', '/sop-consulting/', '/telecalling-training/']),
+    related('Start with the process', ['/business-process-consulting/', '/sop-consulting/', '/blog/whatsapp-business-ai-small-business-india/']),
     leadForm({ h2: 'What are you still doing by hand?', needs: ['Leads are getting lost', 'We run everything on WhatsApp', 'We bought software nobody uses', 'Reports take days to make', 'Payment follow-up is a mess', 'I want to see sales in one place'], from: 'Automation page' }),
   ].join(''),
 };
@@ -249,7 +249,7 @@ const kra = {
       after: cta(),
     }),
     faq(kraFaqs, 'Questions about KRAs and KPIs'),
-    related('Related', ['/guides/kra-examples-small-business/', '/leadership-training/', '/sop-consulting/'], 'Read'),
+    related('Related', ['/guides/kra-examples-small-business/', '/blog/labour-codes-for-small-business-kerala/', '/sop-consulting/'], 'Read'),
     leadForm({ h2: 'Who answers for what in your business?', needs: ['Roles overlap and things get missed', 'I do what nobody else owns', 'Increments feel unfair or random', 'I can’t tell who’s performing', 'Good people are leaving', 'Reviews never happen'], from: 'KRA page' }),
   ].join(''),
 };

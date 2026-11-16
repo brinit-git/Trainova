@@ -1,30 +1,30 @@
 import { band, doc, leadForm, cards, guides as allGuides, plainHero, cta, faq } from '../ui.mjs';
 
-const parent = ['Guides', '/guides/'];
-const date = '2026-11-03';
-const by = `<p class="muted" style="font-size:.92rem">By <a href="/about/">Muhammad Anas NS</a>, Trainova BS, Trivandrum. Updated 3 November 2026.</p>`;
+export const parent = ['Guides', '/guides/'];
+export const date = '2026-11-03';
+export const by = `<p class="muted" style="font-size:.92rem">By <a href="/about/">Muhammad Anas NS</a>, Trainova BS, Trivandrum. Updated 3 November 2026.</p>`;
 const others = (path) => band(`<h2>More guides</h2>${cards(allGuides.filter(([h]) => h !== path).slice(0, 3), 'Read the guide')}`, 'rule');
-const table = (head, rows) => `<div class="tablewrap"><table class="table"><thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+export const table = (head, rows) => `<div class="tablewrap"><table class="table"><thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 
 const slug = (t) => t.replace(/<[^>]+>/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const withToc = (content) => {
+export const withToc = (content) => {
   const items = [];
   const body = content.replace(/<h2>(.*?)<\/h2>/g, (_, t) => { const id = slug(t); items.push([id, t]); return `<h2 id="${id}">${t}</h2>`; });
   const toc = `<nav class="toc" aria-label="On this page"><p class="mono">On this page</p><ol>${items.map(([id, t]) => `<li><a href="#${id}">${t}</a></li>`).join('')}</ol></nav>`;
   return { body, toc };
 };
-const rail = `<a class="rail" href="/free-business-audit/"><span class="mono">Stuck on this?</span><strong>Free business audit</strong><small>See where your business depends on you, in one honest conversation.</small><em>Book it →</em></a>`;
+export const rail = `<a class="rail" href="/free-business-audit/"><span class="mono">Stuck on this?</span><strong>Free business audit</strong><small>See where your business depends on you, in one honest conversation.</small><em>Book it →</em></a>`;
 
-function guide({ path, crumb, keyword, title, description, h1, lede, content, faqs, video, formH2, from, needs }) {
+export function guide({ path, crumb, keyword, title, description, h1, lede, content, faqs, video, formH2, from, needs, sect = {} }) {
   const { body, toc } = withToc(content);
   return {
-    path, crumb, parent, keyword, title, description, video, faqs: faqs || [],
-    article: { headline: h1, date },
+    path, crumb, parent: sect.parent || parent, keyword, title, description, video, faqs: faqs || [],
+    article: { headline: h1, date: sect.date || date },
     body: [
-      plainHero({ eyebrow: 'Guide', h1, lede }),
-      band(`<div class="article">${toc}<div class="prose">${by}${body}${cta('Book my free business audit')}</div>${rail}</div>`),
+      plainHero({ eyebrow: sect.eyebrow || 'Guide', h1, lede }),
+      band(`<div class="article">${toc}<div class="prose">${sect.by || by}${body}${cta('Book my free business audit')}</div>${rail}</div>`),
       faqs ? faq(faqs, 'Common questions') : '',
-      others(path),
+      sect.more ? sect.more(path) : others(path),
       leadForm({ h2: formH2, from, needs }),
     ].join(''),
   };

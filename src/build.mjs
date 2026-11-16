@@ -7,11 +7,12 @@ import core from './content/core.mjs';
 import consulting from './content/consulting.mjs';
 import training from './content/training.mjs';
 import guides from './content/guides.mjs';
+import blog from './content/blog.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const css = readFileSync(join(root, 'src/site.css'), 'utf8').replace(/\/\*.*?\*\//gs, '').replace(/\s*\n\s*/g, '');
 const js = readFileSync(join(root, 'src/site.js'), 'utf8').replace(/\s*\n\s*/g, '');
-const pages = [...core, ...consulting, ...training, ...guides];
+const pages = [...core, ...consulting, ...training, ...guides, ...blog];
 
 const write = (file, text) => {
   mkdirSync(dirname(join(root, file)), { recursive: true });

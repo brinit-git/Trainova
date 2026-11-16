@@ -496,7 +496,7 @@ d.querySelectorAll('form[data-wa]').forEach(function(f){
     e.preventDefault();
     var v=function(n){return f.elements[n].value.trim()};
     var needs=[].map.call(f.querySelectorAll('[name=need]:checked'),function(c){return '- '+c.value}).join('\n');
-    var text='Hi Anas, I’m '+v('name')+' from '+v('biz')+'. We have '+v('size')+'.\n\n'+(needs?'Right now:\n'+needs+'\n\n':'')+(f.dataset.ask||'I’d like a free business audit.')+' Please reach me on '+v('phone')+'.\n\n(Sent from '+f.dataset.wa+')';
+    var text='Hi, I’m '+v('name')+' from '+v('biz')+'. We have '+v('size')+'.\n\n'+(needs?'Right now:\n'+needs+'\n\n':'')+(f.dataset.ask||'I’d like a free business audit.')+' Please reach me on '+v('phone')+'.\n\n(Sent from '+f.dataset.wa+')';
     if(window.gtag)gtag('event','generate_lead',{page:location.pathname});
     window.open(f.action+'?text='+encodeURIComponent(text),'_blank','noopener');
   });

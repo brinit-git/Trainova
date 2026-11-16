@@ -255,7 +255,7 @@ const about = {
     band(`<div class="two center">${fig('anas-boardroom', 'Anas of Trainova BS presenting in a boardroom beside a laptop and conference table', '')}<div class="prose"><span class="eyebrow mono">Who you’ll talk to</span><h2>Muhammad Anas NS</h2><p>Anas is the person you’ll see in our videos and the person you’ll talk to, working with owners in Malayalam and English on the unglamorous parts of running a business: who decides what, what gets written down and how a team learns to take ownership.</p><p>The view is direct: as CEO or MD, your time should go to strategic building and core values, not babysitting. Everything we do comes back to that sentence.</p><p><a href="${site.person.linkedin}" rel="noopener">Anas on LinkedIn</a></p></div></div>`, 'sheetband'),
     band(`${head('What we believe', 'Four things that shape the work.')}<ol class="steps c2" style="margin-top:28px"><li><h3>Values come first</h3><p>A system without values is just rules people get around. We write down what the business stands for, then build processes that follow from it. On our brochure: “We shape values into scalable systems and SOPs.”</p></li><li><h3>The people doing the job know the job</h3><p>SOPs written in a head office get ignored. We write them with the person who does the work, then test them on someone who doesn’t.</p></li><li><h3>Simple beats complete</h3><p>A one-page process people follow is worth more than fifty pages they don’t. We start with what hurts most and stop when it’s enough.</p></li><li><h3>Honest is cheaper</h3><p>If you need a CA, or a small fix you can do yourself, or you’re not ready, we’ll say so. It’s a small state, and word gets around.</p></li></ol>`, 'rule'),
     related('See how this works in practice', ['/free-business-audit/', '/sop-consulting/', '/corporate-training/']),
-    leadForm({ h2: 'Talk to Anas.', from: 'About page' }),
+    leadForm({ h2: 'Talk to us.', from: 'About page' }),
   ].join(''),
 };
 
@@ -309,7 +309,7 @@ const guidesHub = {
   title: 'Free Business Guides for Kerala MSME Owners | Trainova BS',
   description: 'Free, practical guides for owners: writing SOPs, KRA examples, how to stop micromanaging, scaling a small business and getting your business to run without you.',
   body: [
-    plainHero({ eyebrow: 'Free guides', h1: 'Free guides for business owners', lede: 'What we would tell you on a call, written down. Use them yourself. If you get stuck, we’re a message away.' }),
+    plainHero({ eyebrow: 'Free guides', h1: 'Free guides for business owners', lede: 'What we would tell you on a call, written down. Use them yourself. If you get stuck, we’re a message away. Looking for news? Read our <a href="/blog/">blog</a>.' }),
     band(cards(guides, 'Read the guide')),
     leadForm({ h2: 'Would you rather just talk it through?', from: 'Guides page' }),
   ].join(''),

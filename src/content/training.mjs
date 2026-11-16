@@ -110,7 +110,7 @@ const leadership = {
       ],
     }),
     faq(leadFaqs, 'Questions about leadership training'),
-    related('Works well with', ['/kra-consulting/', '/guides/stop-micromanaging-your-team/', '/corporate-training/']),
+    related('Works well with', ['/kra-consulting/', '/guides/stop-micromanaging-your-team/', '/blog/reduce-employee-attrition-small-business/']),
     lf({ h2: 'Who needs to stop calling you?', needs: ['Managers bring me every decision', 'I promoted the wrong person, maybe', 'Supervisors avoid hard conversations', 'Our values aren’t written down', 'Good staff leave because of managers', 'I want a quote for a batch'], from: 'Leadership training page' }),
   ].join(''),
 };
@@ -281,7 +281,7 @@ const sme = {
       after: cta('Ask about training for my team', '#talk'),
     }),
     faq(smeFaqs, 'Questions about SME training'),
-    related('Related', ['/process-training/', '/leadership-training/', '/corporate-training/']),
+    related('Related', ['/process-training/', '/blog/labour-codes-for-small-business-kerala/', '/corporate-training/']),
     lf({ h2: 'What would you fix first?', needs: ['Customer handling', 'Selling and upselling', 'Supervisors and team leads', 'Everyone does it differently', 'New staff take too long', 'I want a quote'], from: 'SME training page' }),
   ].join(''),
 };
@@ -430,7 +430,7 @@ const dm = {
       after: cta('Ask about the next session', '#talk'),
     }),
     faq(dmFaqs, 'Questions about digital marketing training'),
-    related('Related', ['/telecalling-training/', '/business-automation/', '/corporate-training/']),
+    related('Related', ['/telecalling-training/', '/business-automation/', '/blog/how-to-choose-an-seo-agency-kerala/']),
     lf({ h2: 'What’s your marketing telling you?', needs: ['I can’t read my agency’s report', 'We get likes, not customers', 'I don’t know my cost per lead', 'I want to do the basics myself', 'I’m comparing agencies', 'I want to join the next session'], from: 'Digital marketing training page' }),
   ].join(''),
 };
