@@ -56,6 +56,8 @@ export const blog = [
   ['/blog/45-day-payment-rule-msme/', 'The 45 day payment rule for MSMEs', 'What to do as a buyer and as a supplier'],
   ['/blog/reduce-employee-attrition-small-business/', 'How to reduce employee attrition', 'Fix the first six months first'],
   ['/blog/how-to-choose-an-seo-agency-kerala/', 'How to choose an SEO agency in Kerala', 'Eight questions to ask first'],
+  ['/blog/udyam-registration-small-business/', 'Udyam registration for small businesses', 'Who needs it and how it works'],
+  ['/blog/annual-business-review-checklist/', 'Year-end business review checklist', 'Seven areas and a one-page plan'],
 ];
 
 const esc = (s) => String(s).replace(/&(?!amp;|lt;|gt;|quot;)/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

@@ -48,6 +48,8 @@ const SECONDARY = {
   '/blog/45-day-payment-rule-msme/': ['Section 43B(h)', 'Udyam', 'MSMED'],
   '/blog/reduce-employee-attrition-small-business/': ['stay interview', 'onboarding', 'one-to-one'],
   '/blog/how-to-choose-an-seo-agency-kerala/': ['Google Business Profile', 'guarantee', 'Search Console'],
+  '/blog/udyam-registration-small-business/': ['micro, small and medium', 'Aadhaar'],
+  '/blog/annual-business-review-checklist/': ['year-end', 'cash flow'],
   '/guides/how-to-be-a-good-telecaller/': ['effective telecalling', 'telecalling tips', 'what is telecalling'],
 };
 const AI_WORDS = /\b(delve|tapestry|seamless(ly)?|leverag(e|ing)|elevate your|unlock your|game.?changer|cutting.?edge|robust|holistic|synerg|in today's (fast|digital|competitive)|landscape of|empower(ing)? your)\b/i;

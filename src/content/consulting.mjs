@@ -311,7 +311,7 @@ const scaling = {
       after: cta(),
     }),
     faq(scaleFaqs, 'Questions about scaling a business'),
-    related('Go deeper', ['/guides/how-to-scale-a-small-business/', '/leadership-training/', '/kra-consulting/'], 'Read'),
+    related('Go deeper', ['/guides/how-to-scale-a-small-business/', '/blog/annual-business-review-checklist/', '/kra-consulting/'], 'Read'),
     leadForm({ h2: 'What’s your next wall?', needs: ['Revenue is up but profit isn’t', 'I need managers I can trust', 'Thinking about a second branch', 'Quality slips as we grow', 'I have no time to plan', 'We’ve been stuck at this size for years'], from: 'Scaling page' }),
   ].join(''),
 };
@@ -365,7 +365,7 @@ const startup = {
       items: ['Company registration, GST or trademarks. See your CA or CS.', 'Fundraising or investor introductions.', 'Writing your code or designing your product.', 'Telling you your idea will work. Only customers can do that.'],
     }),
     faq(startFaqs, 'Questions founders ask us'),
-    related('Useful next', ['/guides/how-to-write-an-sop/', '/business-automation/', '/fresh-graduate-training/'], 'Read'),
+    related('Useful next', ['/guides/how-to-write-an-sop/', '/business-automation/', '/blog/udyam-registration-small-business/'], 'Read'),
     leadForm({ h2: 'What are you building?', needs: ['We’re just starting out', 'Founders keep disagreeing', 'First hires aren’t working out', 'Sales are random and unstructured', 'I’m doing everything myself', 'We’re growing and it’s getting messy'], from: 'Startup page' }),
   ].join(''),
 };

@@ -187,6 +187,82 @@ const seo = guide({
   ],
 });
 
+const udyam = guide({
+  sect, path: '/blog/udyam-registration-small-business/', crumb: 'Udyam registration', keyword: 'Udyam registration', from: 'Udyam registration blog', formH2: 'Registered, and still doing everything yourself?',
+  title: 'Udyam Registration for Small Business: Steps and Limits',
+  description: 'Udyam registration explained for small business owners: who needs it, the revised micro, small and medium limits, what you need to apply and why it matters.',
+  h1: 'Udyam registration for small businesses: who needs it and how it works',
+  lede: 'Udyam registration is free, takes about as long as a cup of tea, and it is how the government and your customers know you’re a micro or small enterprise. Here is what to know before you apply.',
+  content: `<p><strong>This is general information, not tax or legal advice.</strong> Check the details on the official portal, <a href="https://udyamregistration.gov.in" rel="noopener">udyamregistration.gov.in</a>, or with your CA.</p>
+  <h2>What Udyam registration is</h2>
+  <p>It is the government’s registration for micro, small and medium enterprises (MSMEs). You get a certificate and a number. Explainers describe it as free, online and Aadhaar-based. Be careful of any website that charges a fee to “do it for you”. Use the official portal.</p>
+  <h2>The size limits</h2>
+  <p>The government revised the classification from 1 April 2025, according to <a href="https://capexil.org/goi-revises-msme-classification-effective-apr-2025/" rel="noopener">a summary of the notification</a>. A business must meet both the investment and the turnover limit for a category.</p>
+  ${table(['Category', 'Investment up to', 'Turnover up to'], [
+    ['Micro', '₹2.5 crore', '₹10 crore'],
+    ['Small', '₹25 crore', '₹100 crore'],
+    ['Medium', '₹125 crore', '₹500 crore'],
+  ])}
+  <p>Existing registrations are reported to carry over without registering again. Confirm your own category on the portal.</p>
+  <h2>Why it matters more now</h2>
+  <ul class="dots"><li><strong>Payment protection.</strong> The rules on paying micro and small suppliers within 45 days depend on the supplier’s status. Read our post on the <a href="/blog/45-day-payment-rule-msme/">45 day payment rule</a>. Buyers will ask for your registration number.</li><li><strong>Credibility.</strong> Larger buyers and banks often ask for it before they deal with you.</li><li><strong>Schemes and loans.</strong> Many MSME schemes ask for registration. Check what applies to your sector with your bank or the District Industries Centre.</li><li><strong>The law is changing.</strong> The MSMED amendment passed in August 2026 is reported to make registration free and voluntary. Check the official notification for when that applies.</li></ul>
+  <h2>What to have ready</h2>
+  <ol class="nums"><li><strong>Aadhaar</strong> of the owner, partner or authorised signatory.</li><li><strong>PAN</strong> of the business, and GST details if you’re registered. The portal explains what it needs for each type of business.</li><li><strong>Your business details.</strong> Name, address, bank account, start date, activity and number of employees.</li><li><strong>Your investment and turnover figures.</strong> Ask your CA so the numbers match your returns.</li></ol>
+  <h2>How to apply, in short</h2>
+  <ol class="nums"><li>Go to the official portal and start a new registration.</li><li>Enter the Aadhaar details and verify with the OTP.</li><li>Fill in the business details and the activity code that matches what you do.</li><li>Submit, and download the certificate.</li><li>Put the number on your invoices and quotes, and keep a copy where your accounts person can find it.</li></ol>
+  <h2>Mistakes to avoid</h2>
+  <ul class="dots"><li>Paying an agent for something that is free.</li><li>Picking the wrong activity, which can cause problems later. Choose carefully.</li><li>Leaving details out of date after you move, add a unit or change the numbers.</li><li>Treating the certificate as the finish. It’s a document, and your business still has to run well.</li></ul>
+  <h2>After registration</h2>
+  <p>Registration doesn’t make a business run better. If you’re still approving every payment and answering every query yourself, the certificate won’t change that. That part is <a href="/business-process-consulting/">process</a> work, and a <a href="/free-business-audit/">free business audit</a> is where we start.</p>`,
+  faqs: [
+    ['What is Udyam registration?', 'It is the government’s online registration for micro, small and medium enterprises. You get a certificate with a unique number after you apply on the official portal.'],
+    ['Is Udyam registration free?', 'Explainers consistently describe it as free. Use the official portal, and don’t pay anyone who charges for it. Check the portal for the current terms.'],
+    ['What are the limits for micro, small and medium enterprises?', 'From 1 April 2025, micro is up to ₹2.5 crore investment and ₹10 crore turnover, small up to ₹25 crore and ₹100 crore, and medium up to ₹125 crore and ₹500 crore. Both limits must be met.'],
+    ['Do I need Udyam registration to be protected by the 45 day payment rule?', 'Buyers usually rely on a supplier’s registration to know whether it is a micro or small enterprise. Ask your CA how it applies to you.'],
+    ['Do I have to register again after the 2025 limits changed?', 'Summaries of the change say existing registrations carry over. Look at your certificate on the portal to confirm your category.'],
+  ],
+});
+
+const review = guide({
+  sect, path: '/blog/annual-business-review-checklist/', crumb: 'Annual business review checklist', keyword: 'business review checklist', from: 'Business review checklist blog', formH2: 'Want someone to go through it with you?',
+  title: 'Year-End Business Review Checklist for Small Business',
+  description: 'A year-end business review checklist for small business owners: numbers, customers, team, processes and compliance, with a one-page plan for the next 90 days.',
+  h1: 'Year-end business review checklist for small business owners',
+  lede: 'Most owners never review the year. They look at the bank balance, feel good or bad, and start the next one the same way. A business review checklist takes an afternoon and shows what to change.',
+  content: `<h2>How to use this</h2>
+  <p>Set aside half a day, with your accounts person and your most senior manager. Print the questions. Write the answers down, with numbers, not feelings. Where you can’t answer, that is the finding.</p>
+  <h2>1. The numbers</h2>
+  <ul class="dots"><li>What was your profit for the year, after paying yourself a fair salary?</li><li>Which products or services made money, and which only kept you busy?</li><li>How much cash do you have, and how many weeks of costs does it cover?</li><li>Who owes you money, and for how long? A rise in dues owed to you is a cash flow problem in the making.</li><li>What did it cost to win each new customer?</li></ul>
+  <h2>2. Customers</h2>
+  <ul class="dots"><li>How many customers came back this year, compared with last?</li><li>Who are your top five by revenue? What happens if you lose the biggest?</li><li>What were the three most common complaints? Were they the same as last year?</li><li>Where do your best customers come from?</li></ul>
+  <h2>3. Team</h2>
+  <ul class="dots"><li>Who left this year, after how many months, and why? See <a href="/blog/reduce-employee-attrition-small-business/">how to reduce employee attrition</a>.</li><li>Does every person have three to five clear goals? <a href="/guides/kra-examples-small-business/">KRA examples</a> can help.</li><li>Who could run the place for a month without you?</li><li>Who is ready for more responsibility, and who is stuck?</li></ul>
+  <h2>4. Processes</h2>
+  <ul class="dots"><li>What went wrong twice this year? That’s a missing procedure.</li><li>Which jobs only one person knows how to do?</li><li>Which three jobs, written down, would save you the most phone calls? Start with <a href="/guides/how-to-write-an-sop/">how to write an SOP</a>.</li></ul>
+  <h2>5. You</h2>
+  <p>Do the test in <a href="/guides/business-cant-run-without-owner/">My business can’t run without me</a>. Count your “no” answers. Then note how many days you took off this year, and how many of them you were still answering calls.</p>
+  <h2>6. Compliance and paperwork</h2>
+  <p>Ask your CA and your labour consultant, not us. Questions to bring: Is your <a href="/blog/udyam-registration-small-business/">Udyam registration</a> current? Are you paying micro and small suppliers inside the <a href="/blog/45-day-payment-rule-msme/">45 day limit</a>? Does every person have an appointment letter, and does your salary structure fit the <a href="/blog/labour-codes-for-small-business-kerala/">new labour codes</a>?</p>
+  <h2>7. Marketing and enquiries</h2>
+  <ul class="dots"><li>How many enquiries did you get, and how many became customers?</li><li>How fast does someone reply on WhatsApp or the phone?</li><li>Is your Google Business Profile up to date, with recent reviews?</li></ul>
+  <h2>Turn it into a one-page plan</h2>
+  ${table(['Pick', 'How many', 'Example'], [
+    ['Keep doing', '2', 'The product line that earns the most'],
+    ['Stop', '2', 'The customer who pays late and asks for everything'],
+    ['Start', '3', 'A weekly one-page report, an onboarding plan, a payment process'],
+    ['Fix first', '1', 'The thing that caused the most pain this year'],
+  ])}
+  <p>Give each item an owner and a date within 90 days. Put the page where your team can see it. Review it every month, not next December.</p>
+  <h2>If the review feels too big</h2>
+  <p>That’s common, and it’s a result in itself. A <a href="/free-business-audit/">free business audit</a> goes through the same areas with you and picks the one place to begin.</p>`,
+  faqs: [
+    ['What should a year-end business review include?', 'Your numbers, customers, team, processes, your own role, compliance and enquiries. Write each answer down with a figure, and turn the findings into a one-page plan for the next 90 days.'],
+    ['How long does a business review take?', 'Half a day for a small business, with your accounts person and a senior manager. The planning afterwards is what takes discipline.'],
+    ['When should a small business do a review?', 'At the end of the financial year or the calendar year, and a short version every quarter. Choose the date you will really keep.'],
+    ['Do I need a consultant to do a business review?', 'No. Use the checklist yourself first. Bring in someone when you keep finding the same problem and can’t see the cause.'],
+  ],
+});
+
 const hub = {
   path: '/blog/', crumb: 'Blog', keyword: 'blog',
   title: 'Trainova BS Blog: News for Kerala Business Owners',
@@ -197,4 +273,4 @@ const hub = {
   ].join(''),
 };
 
-export default [hub, wa, labour, pay, attr, seo];
+export default [hub, wa, labour, pay, attr, seo, udyam, review];
